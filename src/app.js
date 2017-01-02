@@ -1,27 +1,20 @@
 console.log("Main App");
+var loadWasm = require('./wasm').loadWasm;
 
 fetch('imageprocessor.wasm')
     .then(response => response.arrayBuffer())
     .then(buffer => {
         Module.wasmBinary = buffer;
+        Module.postRun = [loadWasm];
 
         fetch('imageprocessor.js')
             .then(response => response.blob())
             .then(responseBlob => {
-                var script = document.createElement('script'),
-                    src = URL.createObjectURL(responseBlob);
+                var script = document.createElement('script');
+                var src = URL.createObjectURL(responseBlob);
 
                 script.src = src;
                 script.async = false;
-                script.addEventListener('load', () => {
-                    var ldw = require('./wasm').loadWasm;
-
-                    /*
-                     * This is a bad hack waiting for runtime to load
-                     * because of async script loading emscripten stuff
-                     */
-                    setTimeout(ldw, 100);
-                });
                 document.body.appendChild(script);
             });
     });
