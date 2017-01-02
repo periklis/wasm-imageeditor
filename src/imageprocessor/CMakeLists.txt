@@ -4,7 +4,7 @@ project (ImageProcessorModule)
 file(GLOB postJsFiles *post.js)
 
 set(COMMON_CXX_FLAGS "-std=c++14 -Wall -Werror -Wno-c++11-narrowing -Wno-unused-local-typedef -pthread")
-set(EM_LINK_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='native-wasm'\" -s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 -s NO_EXIT_RUNTIME=0 --preload-file test.jpg")
+set(EM_LINK_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='native-wasm'\" -s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 --preload-file test.jpg")
 
 # Set compile flags for emscripten clang
 if(UNIX)
