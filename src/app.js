@@ -12,6 +12,16 @@ fetch('imageprocessor.wasm')
                     src = URL.createObjectURL(responseBlob);
 
                 script.src = src;
+                script.async = false;
+                script.addEventListener('load', () => {
+                    var ldw = require('./wasm').loadWasm;
+
+                    /*
+                     * This is a bad hack waiting for runtime to load
+                     * because of async script loading emscripten stuff
+                     */
+                    setTimeout(ldw, 100);
+                });
                 document.body.appendChild(script);
             });
     });
