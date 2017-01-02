@@ -1,4 +1,6 @@
 .dir-locals.el
 .projectile
+.tern-port
 build/*
 node_modules/*
+npm-debug.log

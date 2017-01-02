@@ -1,12 +1,11 @@
-var Module = {
-    'print': function (text) {
-        console.log('MODULE: ' + text);
-    },
-    'preInit': [function () {
-        fetch('imageprocessor.wasm')
-            .then(response => response.arrayBuffer())
-            .then(buffer => {
-                Module.wasmBinary = buffer;
-            });
-    }]
-};
+// var Module = {
+//     // 'noInitialRun': true,
+//     // 'noExitRuntime': true,
+//     'preInit': [function () {
+//         fetch('imageprocessor.wasm')
+//             .then(response => response.arrayBuffer())
+//             .then(buffer => {
+//                 Module.wasmBinary = buffer;
+//             });
+//     }]
+// };

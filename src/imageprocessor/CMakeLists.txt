@@ -1,8 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 project (ImageProcessorModule)
 
-file(GLOB preJsFiles *init.js)
-file(GLOB postJsFiles *idl.js)
+file(GLOB postJsFiles *post.js)
 
 set(COMMON_CXX_FLAGS "-std=c++14 -Wall -Werror -Wno-c++11-narrowing -Wno-unused-local-typedef -pthread")
 set(EM_LINK_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='native-wasm'\" -s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 -s NO_EXIT_RUNTIME=0 --preload-file test.jpg")
@@ -27,14 +26,14 @@ include_directories(
 # Emit Emscripten WebIDL glue code
 #
 add_custom_command(
-  OUTPUT imageprocessor-idl.js
-  COMMAND python ${EMSCRIPTEN_ROOT_PATH}/tools/webidl_binder.py imageprocessor.idl imageprocessor-idl
+  OUTPUT imageprocessor-idl-post.js
+  COMMAND python ${EMSCRIPTEN_ROOT_PATH}/tools/webidl_binder.py imageprocessor.idl imageprocessor-idl-post
   COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../resources/test.jpg ${CMAKE_CURRENT_BINARY_DIR}/test.jpg
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   VERBATIM
   USES_TERMINAL
   )
-add_custom_target(imageprocessor-idl ALL DEPENDS imageprocessor-idl.js)
+add_custom_target(imageprocessor-idl ALL DEPENDS imageprocessor-idl-post.js)
 
 #
 # Emit llvm bitcode for module and produce javascript and wasm
@@ -45,5 +44,4 @@ add_dependencies(imageprocessor imageprocessor-idl)
 set_target_properties(imageprocessor PROPERTIES LINK_FLAGS ${EM_LINK_FLAGS})
 target_link_libraries(imageprocessor ${JPEG_LIBRARY}/libjpeg.dylib)
 
-em_link_pre_js(imageprocessor ${preJsFiles})
 em_link_post_js(imageprocessor ${postJsFiles})
