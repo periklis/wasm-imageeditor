@@ -1,2 +1,2 @@
 #include "imageprocessor.hpp"
-#include "imageprocessor-idl.cpp"
+#include "imageprocessor-idl-post.cpp"
