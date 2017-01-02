@@ -1,0 +1,10 @@
+cmake_minimum_required (VERSION 2.8)
+project (LibDependencies LANGUAGES CXX)
+
+find_file(JPEG_DYLIB_FILE "libjpeg.dylib" PATHS ${CMAKE_CURRENT_BINARY_DIR} NO_DEFAULT_PATH)
+
+if(NOT EXISTS ${JPEG_DYLIB_FILE})
+  execute_process(
+    COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/build.sh"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+endif(NOT EXISTS ${JPEG_DYLIB_FILE})

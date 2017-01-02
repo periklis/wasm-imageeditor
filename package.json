@@ -1,0 +1,17 @@
+{
+  "name": "wasm-imageeditor",
+  "version": "1.0.0",
+  "description": "WebAssembly based Imageeditor",
+  "main": "src/app.js",
+  "scripts": {
+    "server": "webpack-dev-server --config webpack.config.js --progress --colors"
+  },
+  "author": "Periklis Tsirakidis",
+  "license": "MIT License",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.22.0",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}

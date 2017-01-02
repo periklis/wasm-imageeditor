@@ -1,0 +1,6 @@
+[Prefix="mayflower::wasm::"]
+interface ImageProcessor {
+  void ImageProcessor();
+  void dims();
+  void histogram();
+};

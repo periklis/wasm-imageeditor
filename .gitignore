@@ -1,0 +1,4 @@
+.dir-locals.el
+.projectile
+build/*
+node_modules/*
