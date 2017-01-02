@@ -12,8 +12,7 @@ ln -s src/imageprocessor.wasm
 ```
 
 ## Run
-### Browser
-``` open http://localhost:9000/
+Open http://localhost:9000/ in your browser and check console in Web Developer Tools.
 
 ## TODO
 - Add missing licensing info, due to boost example usage
