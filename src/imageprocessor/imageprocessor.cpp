@@ -26,7 +26,7 @@ void get_hist(const V& img_view, R& hist) {
 void mayflower::wasm::ImageProcessor::dims()
 {
   rgb8_image_t img;
-  FILE* file = fopen("test.jpg", "rb");
+  FILE* file = fopen("/data/test.jpg", "rb");
   detail::jpeg_reader m(file);
   m.read_image(img);
   auto p = m.get_dimensions();
@@ -38,12 +38,12 @@ void mayflower::wasm::ImageProcessor::dims()
 
 void mayflower::wasm::ImageProcessor::histogram()
 {
-    rgb8_image_t img;
-    jpeg_read_image("test.jpg",img);
-    int histogram[256];
-    std::fill(histogram,histogram+256,0);
-    get_hist(const_view(img),histogram);
+  rgb8_image_t img;
+  jpeg_read_image("/data/test.jpg",img);
+  int histogram[256];
+  std::fill(histogram,histogram+256,0);
+  get_hist(const_view(img),histogram);
 
-    for(std::size_t ii=0;ii<256;++ii)
-      std::cout << histogram[ii] << std::endl;
+  for(std::size_t ii=0;ii<256;++ii)
+    std::cout << histogram[ii] << std::endl;
 }

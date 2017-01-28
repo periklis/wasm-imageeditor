@@ -15,10 +15,10 @@ ln -s src/imageprocessor.wasm
 Open http://localhost:9000/ in your browser and check console in Web Developer Tools.
 
 ## Backlog
-- Remove boost example code due to licensing issues
-- Make cmake target build path more webpack friendly without symbolic links
-- Replace --preload-file from src/imageprocessor/CMakeLists.txt:7 with file upload
-- Refactor loadWasm to a more robust bootstrap process for ImageProcessor
-- Add react-based UI for drawing canvas and graphic manipulation controls
-- Add Boost/Gil based ImageProcessor API for resize and crop
-- Refactor lib/* to cmake package system on emscripten toolchain
+- [] Remove boost example code due to licensing issues
+- [] Make cmake target build path more webpack friendly without symbolic links
+- [x] Replace --preload-file from src/imageprocessor/CMakeLists.txt:7 with file upload
+- [] Refactor loadWasm to a more robust bootstrap process for ImageProcessor
+- [] Add react-based UI for drawing canvas and graphic manipulation controls
+- [] Add Boost/Gil based ImageProcessor API for resize and crop
+- [] Refactor lib/* to cmake package system on emscripten toolchain

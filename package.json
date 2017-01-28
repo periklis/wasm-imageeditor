@@ -1,17 +1,41 @@
 {
-  "name": "wasm-imageeditor",
-  "version": "1.0.0",
-  "description": "WebAssembly based Imageeditor",
-  "main": "src/app.js",
-  "scripts": {
-    "server": "webpack-dev-server --config webpack.config.js --progress --colors"
-  },
-  "author": "Periklis Tsirakidis",
-  "license": "MIT License",
-  "devDependencies": {
-    "html-webpack-plugin": "^2.22.0",
-    "raw-loader": "^0.5.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
-  }
+    "name": "wasm-imageeditor",
+    "version": "1.0.0",
+    "description": "WebAssembly based Imageeditor",
+    "main": "src/app.js",
+    "scripts": {
+        "dev": "webpack-dev-server --config webpack.config.js --progress --colors"
+    },
+    "author": "Periklis Tsirakidis",
+    "license": "MIT",
+    "dependencies": {
+        "localforage": "^1.4.3",
+        "node-sass": "^4.2.0",
+        "react": "15.4.2",
+        "react-dom": "15.4.2",
+        "react-dropzone": "^3.9.0",
+        "sass-loader": "^4.0.2"
+    },
+    "devDependencies": {
+        "babel-core": "6.21.0",
+        "babel-loader": "6.2.9",
+        "babel-plugin-transform-class-properties": "^6.19.0",
+        "babel-plugin-transform-decorators-legacy": "^1.3.4",
+        "babel-plugin-transform-runtime": "^6.15.0",
+        "babel-preset-es2015": "6.18.0",
+        "babel-preset-react": "6.16.0",
+        "babel-runtime": "^6.20.0",
+        "css-loader": "0.26.1",
+        "extract-text-webpack-plugin": "^1.0.1",
+        "file-loader": "0.9.0",
+        "postcss-loader": "^1.2.2",
+        "react-hot-loader": "^3.0.0-beta.6",
+        "style-loader": "0.13.1",
+        "url-loader": "0.5.7",
+        "html-webpack-plugin": "^2.22.0",
+        "raw-loader": "^0.5.1",
+        "webpack": "^1.14.0",
+        "webpack-cleanup-plugin": "^0.4.1",
+        "webpack-dev-server": "^1.16.2"
+    }
 }
