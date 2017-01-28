@@ -1,0 +1,8 @@
+-C
+--compiler-wrappers "emcc;em++"
+--isystem /usr/include
+--isystem /Users/periklis/Projects/emsdk_portable/emscripten/incoming/system/include/
+--isystem /Users/periklis/Projects/emsdk_portable/emscripten/incoming/system/include/libc
+--isystem /Users/periklis/Projects/emsdk_portable/emscripten/incoming/system/include/libcxx
+--isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/lib/jpeg-8d
+--isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/lib/boost_1_63_0
