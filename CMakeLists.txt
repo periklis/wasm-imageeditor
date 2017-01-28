@@ -6,6 +6,7 @@ set(JPEG_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/lib/jpeg-8d")
 set(JPEG_DIR "${JPEG_LIBRARY}/.libs")
 
 set(BOOST_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/lib/boost_1_63_0")
+set(LIBCXX_INCLUDE_DIR "${EMSCRIPTEN_ROOT_PATH}/system/include/libcxx")
 
 find_package(JPEG)
 

@@ -18,6 +18,7 @@ endif()
 
 include_directories(
   "${JPEG_INCLUDE_DIR}"
+  "${LIBCXX_INCLUDE_DIR}"
   "${BOOST_INCLUDE_DIR}"
   "${CMAKE_CURRENT_BINARY_DIR}"
   "${CMAKE_CURRENT_SOURCE_DIR}")
