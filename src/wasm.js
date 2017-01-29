@@ -1,12 +1,20 @@
-exports.loadWasm = function (filename) {
+exports.processImage = function (filename) {
+    var results = {
+        dimensions: {x:0, y:0},
+        histogram: []
+    };
 
     if ('WebAssembly' in window) {
         var ip = new Module.ImageProcessor(filename);
-        var dims = ip.dimensions();
-        console.log(dims);
 
-        var hg = ip.histogram();
-        console.log(hg);
+        var dims = ip.dimensions();
+        results.dimensions.x = dims.get('x');
+        results.dimensions.y = dims.get('y');
+
+        var histogram = ip.histogram();
+        for(var i=0; i < histogram.size();i++){
+            results.histogram.push(histogram.get(i));
+        }
 
         ip.delete();
 
@@ -14,6 +22,8 @@ exports.loadWasm = function (filename) {
         console.log("Your browser doesn't support Web Assembly. You may need " +
                     "to enable it in your browser's flags.");
     }
+
+    return results;
 };
 
 exports.makeFs = function() {

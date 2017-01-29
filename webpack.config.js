@@ -99,8 +99,6 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpack({
-            // filename: 'index.html',
-            // inject: 'body',
             template: path.resolve(rootDir, 'src', 'index.html')
         })
     ],

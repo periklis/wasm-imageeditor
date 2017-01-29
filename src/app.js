@@ -1,25 +1,22 @@
 console.log("Main App");
-var loadWasm = require('./wasm').loadWasm;
+var processImage = require('./wasm').processImage;
 var makeFs = require('./wasm').makeFs;
 
-exports.uploadFile = function (files) {
-    files.forEach(file => {
-        fetch(file.preview)
-            .then(response => response.arrayBuffer())
-            .then(buffer => {
-                var view = new Uint8Array(buffer);
+exports.uploadFile = function (file) {
+    return fetch(file.preview)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+            var view = new Uint8Array(buffer);
 
-                FS.writeFile(
-                    '/data/test.jpg',
-                    view,
-                    {encoding: 'binary'}
-                );
-                FS.syncfs(true, err => console.log(err));
-                loadWasm("/data/test.jpg");
-            });
-    });
+            FS.writeFile(
+                '/data/test.jpg',
+                view,
+                {encoding: 'binary'}
+            );
+            FS.syncfs(true, err => {if(err) console.log(err)});
 
-    return false;
+            return processImage("/data/test.jpg");
+        });
 };
 
 fetch('imageprocessor.wasm')
