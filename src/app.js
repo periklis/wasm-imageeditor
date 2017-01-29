@@ -15,7 +15,7 @@ exports.uploadFile = function (files) {
                     {encoding: 'binary'}
                 );
                 FS.syncfs(true, err => console.log(err));
-                loadWasm();
+                loadWasm("/data/test.jpg");
             });
     });
 

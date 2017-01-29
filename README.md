@@ -22,3 +22,4 @@ Open http://localhost:9000/ in your browser and check console in Web Developer T
 - [] Add react-based UI for drawing canvas and graphic manipulation controls
 - [] Add Boost/Gil based ImageProcessor API for resize and crop
 - [] Refactor lib/* to cmake package system on emscripten toolchain
+- [x] Replace WebIDL with embind for better handling of stl containers

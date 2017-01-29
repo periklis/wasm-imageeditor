@@ -1,9 +1,14 @@
-exports.loadWasm = function () {
+exports.loadWasm = function (filename) {
 
     if ('WebAssembly' in window) {
-        var ip = new Module.ImageProcessor();
-        ip.dims();
-        ip.histogram();
+        var ip = new Module.ImageProcessor(filename);
+        var dims = ip.dimensions();
+        console.log(dims);
+
+        var hg = ip.histogram();
+        console.log(hg);
+
+        ip.delete();
 
     } else {
         console.log("Your browser doesn't support Web Assembly. You may need " +
