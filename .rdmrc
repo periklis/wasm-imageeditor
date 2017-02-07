@@ -6,3 +6,5 @@
 --isystem /Users/periklis/Projects/emsdk_portable/emscripten/incoming/system/include/libcxx
 --isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/lib/jpeg-8d
 --isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/lib/boost_1_63_0
+--isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/googletest-src/googlemock/include
+--isystem /Users/periklis/Projects/Mayflower/MayDay/wasm-imageeditor/build/googletest-src/googletest/include
