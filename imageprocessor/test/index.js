@@ -1,9 +1,9 @@
-fetch('../build/example.wasm')
+fetch('../../build/imageprocessor-test.wasm')
     .then(response => response.arrayBuffer())
     .then(buffer => {
         Module.wasmBinary = buffer;
 
-        fetch('../build/example.js')
+        fetch('../../build/imageprocessor-test.js')
             .then(response => response.blob())
             .then(responseBlob => {
                 var script = document.createElement('script');

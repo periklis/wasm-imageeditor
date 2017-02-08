@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+
+project(Boost NONE)
+
+include(ExternalProject)
+ExternalProject_Add(Boost
+  URL               https://kent.dl.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.tar.gz
+  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/boost/src"
+  BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/boost/build"
+  CONFIGURE_COMMAND cd ${CMAKE_CURRENT_BINARY_DIR}/boost/src && ./bootstrap.sh --prefix=${CMAKE_CURRENT_BINARY_DIR}/boost/build --with-toolset=clang --with-libraries=system,filesystem,log
+  BUILD_COMMAND     cd ${CMAKE_CURRENT_BINARY_DIR}/boost/src && ./b2 install toolset=clang link=static
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+  )
