@@ -16,6 +16,7 @@ find_package(JPEG REQUIRED)
 add_executable(imageprocessor src/imageprocessor.cpp)
 
 set_target_properties(imageprocessor PROPERTIES
+  ENABLE_EXPORTS TRUE
   CXX_STANDARD 14
   LINK_FLAGS ${EM_LINK_FLAGS})
 
@@ -46,4 +47,4 @@ set_target_properties(imageprocessor-test PROPERTIES
 target_include_directories(imageprocessor-test
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-target_link_libraries(imageprocessor-test gtest_main)
+target_link_libraries(imageprocessor-test imageprocessor gtest_main)

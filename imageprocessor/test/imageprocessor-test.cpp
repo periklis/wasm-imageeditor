@@ -18,6 +18,6 @@ class ImageProcessorFixture : public ::testing::Test {
 TEST_F(ImageProcessorFixture, ImageProcessorTestDimensions) {
   auto dims = im.dimensions();
 
-  EXPECT_EQ(440, im.dimensions().find("x")->second);
-  EXPECT_EQ(72, im.dimensions().find("y")->second);
+  EXPECT_EQ(440, dims.find("x")->second);
+  EXPECT_EQ(72, dims.find("y")->second);
 }
