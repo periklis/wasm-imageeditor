@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+
+project(libjpeg NONE)
+
+include(ExternalProject)
+ExternalProject_Add(libjpeg
+  URL               http://www.ijg.org/files/jpegsrc.v8d.tar.gz
+  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/libjpeg/src"
+  BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/libjpeg/build"
+  CONFIGURE_COMMAND emconfigure ${CMAKE_CURRENT_BINARY_DIR}/libjpeg/src/./configure
+  BUILD_COMMAND     cd ${CMAKE_CURRENT_BINARY_DIR}/libjpeg/build/ && emmake make
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+  )
