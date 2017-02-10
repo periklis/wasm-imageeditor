@@ -5,6 +5,7 @@ project(libjpeg NONE)
 include(ExternalProject)
 ExternalProject_Add(libjpeg
   URL               http://www.ijg.org/files/jpegsrc.v8d.tar.gz
+  URL_HASH          SHA1=f080b2fffc7581f7d19b968092ba9ebc234556ff
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/libjpeg/src"
   BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/libjpeg/build"
   CONFIGURE_COMMAND emconfigure ${CMAKE_CURRENT_BINARY_DIR}/libjpeg/src/./configure
