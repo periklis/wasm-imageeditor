@@ -4,8 +4,7 @@
   "description": "WebAssembly based Imageeditor",
   "main": "src/app.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.js --progress --colors",
-    "test": "http-server -p 8080 ."
+    "dev": "webpack-dev-server --config webpack.config.js --progress --colors"
   },
   "author": "Periklis Tsirakidis",
   "license": "MIT",
