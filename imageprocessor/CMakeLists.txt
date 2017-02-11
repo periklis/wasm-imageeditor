@@ -48,6 +48,15 @@ target_link_libraries(imageprocessor PRIVATE imageprocessor-lib)
 #
 # Tests
 #
+configure_file(test/testsuite-config.js.in test/testsuite-config.js)
+# add_library(testsuite-main test/testsuite-main.cpp)
+# set_target_properties(testsuite-main PROPERTIES
+#   CXX_STANDARD 14
+#   LINK_FLAGS ${EM_LINK_FLAGS})
+
+# target_include_directories(testsuite-main
+#   PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/test)
+
 add_executable(imageprocessor-test test/imageprocessor-test.cpp)
 
 set_target_properties(imageprocessor-test PROPERTIES
@@ -55,4 +64,7 @@ set_target_properties(imageprocessor-test PROPERTIES
   LINK_FLAGS "${EM_LINK_FLAGS} -s \"BINARYEN_METHOD='asmjs'\" -s DISABLE_EXCEPTION_CATCHING=0 -s ASSERTIONS=1")
 
 target_link_libraries(imageprocessor-test imageprocessor-lib gtest_main)
+
+em_link_pre_js(imageprocessor-test ${CMAKE_CURRENT_BINARY_DIR}/test/testsuite-config.js)
+
 add_test(NAME imageprocessor-test COMMAND imageprocessor-test)

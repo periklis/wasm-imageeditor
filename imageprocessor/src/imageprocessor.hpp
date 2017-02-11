@@ -4,7 +4,6 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <emscripten/bind.h>
 
 namespace mayflower  {
 namespace wasm {

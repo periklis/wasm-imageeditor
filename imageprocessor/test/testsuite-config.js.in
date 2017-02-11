@@ -1,0 +1,10 @@
+var Module = {
+    'preRun': [function() {
+        var fs = require('fs');
+        var file = fs.readFileSync('@EMSCIPTEN_TEST_RESOURCES_PATH@' + 'test.jpg');
+
+        FS.mkdir('/data');
+        FS.mount(NODEFS, {root: '.'}, '/data');
+        FS.writeFile('/data/test.jpg', file, {encoding: 'binary'});
+    }]
+};

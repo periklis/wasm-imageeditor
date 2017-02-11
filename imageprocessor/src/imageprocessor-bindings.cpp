@@ -1,3 +1,4 @@
+#include <emscripten/bind.h>
 #include "imageprocessor.hpp"
 
 EMSCRIPTEN_BINDINGS(ImageProcessor){

@@ -5,13 +5,11 @@ using namespace mayflower::wasm;
 
 class ImageProcessorFixture : public ::testing::Test {
  public:
-  ImageProcessorFixture() {
-
-  }
+  ImageProcessorFixture() {}
 
   virtual ~ImageProcessorFixture(){}
 
-  ImageProcessor im {"/data/test.JPEG"};
+  ImageProcessor im {"/data/test.jpg"};
 
 };
 
