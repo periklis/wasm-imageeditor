@@ -10,7 +10,9 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
 find_package(Boost 1.63.0 REQUIRED)
 find_package(JPEG REQUIRED)
 
-set(EM_LINK_FLAGS "-s BINARYEN=1 -s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 -s TOTAL_MEMORY=134217728")
+set(EM_LINK_FLAGS "-s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 -s TOTAL_MEMORY=134217728")
+set(EM_BIND_FLAGS "--bind")
+set(EM_BINARYEN_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='native-wasm'\"")
 
 #
 # Module
@@ -19,7 +21,7 @@ add_library(imageprocessor-lib src/imageprocessor.cpp)
 
 set_target_properties(imageprocessor-lib PROPERTIES
   CXX_STANDARD 14
-  LINK_FLAGS ${EM_LINK_FLAGS})
+  LINK_FLAGS "${EM_BIND_FLAGS} ${EM_BINARYEN_FLAGS} ${EM_LINK_FLAGS}")
 
 target_compile_options(imageprocessor-lib
   PUBLIC -Wall -Werror -Wno-c++11-narrowing
@@ -41,7 +43,7 @@ set_target_properties(imageprocessor PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
   LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
   CXX_STANDARD 14
-  LINK_FLAGS "${EM_LINK_FLAGS} --bind -s \"BINARYEN_METHOD='native-wasm'\"")
+  LINK_FLAGS "${EM_BIND_FLAGS} ${EM_BINARYEN_FLAGS} ${EM_LINK_FLAGS}")
 
 target_link_libraries(imageprocessor PRIVATE imageprocessor-lib)
 
@@ -49,19 +51,12 @@ target_link_libraries(imageprocessor PRIVATE imageprocessor-lib)
 # Tests
 #
 configure_file(test/testsuite-config.js.in test/testsuite-config.js)
-# add_library(testsuite-main test/testsuite-main.cpp)
-# set_target_properties(testsuite-main PROPERTIES
-#   CXX_STANDARD 14
-#   LINK_FLAGS ${EM_LINK_FLAGS})
-
-# target_include_directories(testsuite-main
-#   PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/test)
 
 add_executable(imageprocessor-test test/imageprocessor-test.cpp)
 
 set_target_properties(imageprocessor-test PROPERTIES
   CXX_STANDARD 14
-  LINK_FLAGS "${EM_LINK_FLAGS} -s \"BINARYEN_METHOD='asmjs'\" -s DISABLE_EXCEPTION_CATCHING=0 -s ASSERTIONS=1")
+  LINK_FLAGS "${EM_LINK_FLAGS} -s DISABLE_EXCEPTION_CATCHING=0 -s ASSERTIONS=1")
 
 target_link_libraries(imageprocessor-test imageprocessor-lib gtest_main)
 
