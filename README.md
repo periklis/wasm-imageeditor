@@ -4,11 +4,10 @@
 ```
 mkdir build
 cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=/PATH/TO/emsdk_portable/emscripten/incoming/cmake/Modules/Platform/Emscripten.cmake ../
+cmake -DCMAKE_TOOLCHAIN_FILE=/PATH/TO/emsdk_portable/emscripten/incoming/cmake/Modules/Platform/Emscripten.cmake \
+      -DCMAKE_BUILD_TYPE=YOUR_BUILD_TYPE_HERE \
+      ../
 make
-ln -s src/imageprocessor.js
-ln -s src/imageprocessor.data
-ln -s src/imageprocessor.wasm
 ```
 
 ## Run
