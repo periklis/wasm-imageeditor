@@ -7,10 +7,6 @@
 
 namespace mayflower  {
 namespace wasm {
-struct Dims {
-  long x;
-  long y;
-};
 
 class ImageProcessor {
  public:
@@ -18,7 +14,9 @@ class ImageProcessor {
       : path_(path) {};
 
   std::map<std::string, long> dimensions();
+
   std::vector<int> histogram();
+
  private:
   std::string path_;
 };
