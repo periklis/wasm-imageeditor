@@ -1,4 +1,3 @@
-console.log("Main App");
 var processImage = require('./wasm').processImage;
 var makeFs = require('./wasm').makeFs;
 

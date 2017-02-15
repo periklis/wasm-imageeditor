@@ -8,5 +8,7 @@ EMSCRIPTEN_BINDINGS(ImageProcessor){
   emscripten::class_<mayflower::wasm::ImageProcessor>("ImageProcessor")
       .constructor<std::string>()
       .function("dimensions", &mayflower::wasm::ImageProcessor::dimensions)
-      .function("histogram", &mayflower::wasm::ImageProcessor::histogram);
+      .function("histogram", &mayflower::wasm::ImageProcessor::histogram)
+      // .function("resize", &mayflower::wasm::ImageProcessor::resize)
+      .function("crop", &mayflower::wasm::ImageProcessor::crop);
 }

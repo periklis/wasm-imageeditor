@@ -21,7 +21,8 @@ class App extends React.Component {
             this.setState({
                 files: acceptedFiles,
                 dimensions: res.dimensions,
-                histogram: res.histogram
+                histogram: res.histogram,
+                src: res.objectUrl
             });
         });
     }
@@ -34,8 +35,11 @@ class App extends React.Component {
               </Dropzone>
               <div className="ImagePreview">
                 {this.state.files.length > 0 &&
-                 <div>
+                <div>
+                 <p>Original Image:</p>
                  <img src={this.state.files[0].preview} />
+                 <p> Cropped image:</p>
+                 <img src={this.state.src} />
                  <div>Dimensions: {this.state.dimensions.x} x {this.state.dimensions.y}</div>
                  <div>Histogram: {this.state.histogram.toString()} </div>
                  </div>

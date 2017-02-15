@@ -1,11 +1,14 @@
 exports.processImage = function (filename) {
     var results = {
         dimensions: {x:0, y:0},
-        histogram: []
+        histogram: [],
+        objectUrl: ''
     };
 
     if ('WebAssembly' in window) {
         var ip = new Module.ImageProcessor(filename);
+
+        ip.crop(700, 500, 1000, 500);
 
         var dims = ip.dimensions();
         results.dimensions.x = dims.get('x');
@@ -17,6 +20,11 @@ exports.processImage = function (filename) {
         }
 
         ip.delete();
+
+        var file = FS.readFile(filename, {encoding: 'binary'});
+        var blob = new Blob([new Uint8Array(file)], {type: 'application/image'});
+        results.objectUrl = URL.createObjectURL(blob);
+
 
     } else {
         console.log("Your browser doesn't support Web Assembly. You may need " +
