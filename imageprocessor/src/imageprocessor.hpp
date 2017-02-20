@@ -13,6 +13,9 @@ class ImageProcessor {
   ImageProcessor(const std::string& path)
       : path_(path) {};
 
+  ImageProcessor(const ImageProcessor& ip) = delete;
+  ImageProcessor& operator=(const ImageProcessor& ip) = delete;
+
   std::map<std::string, long> dimensions();
 
   std::vector<int> histogram();
