@@ -10,7 +10,7 @@ namespace wasm {
 
 class ImageProcessor {
  public:
-  ImageProcessor(const std::string& path)
+  explicit ImageProcessor(const std::string& path)
       : path_(path) {};
 
   ImageProcessor(const ImageProcessor& ip) = delete;
