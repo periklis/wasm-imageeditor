@@ -21,19 +21,12 @@ module.exports = {
   },
 
   "plugins": [
-     "react" //,
-    // "flowtype"
+    "react"
   ],
 
   "globals": {
     "define": true
   },
-
-  // "settings": {
-  //   "flowtype": {
-  //     "onlyFilesWithFlowAnnotation": true
-  //   }
-  // },
 
   "rules": {
     "strict": ["error", "global"],
@@ -72,28 +65,6 @@ module.exports = {
     "react/prefer-es6-class": "warn",
     "react/self-closing-comp": "warn",
     "react/sort-comp": "warn",
-    "react/sort-prop-types": "warn" //,
-
-    // ESLint-plugin-Flowtype
-    // https://github.com/gajus/eslint-plugin-flowtype#configuration
-
-    // // marks Flow type identifiers as defined
-    // 'flowtype/define-flow-type': "error",
-    // // requires that all function parameters have type annotations
-    // 'flowtype/require-parameter-type': "off",
-    // // requires that functions have return type annotation
-    // 'flowtype/require-return-type': "off",
-    // // makes sure that files have a valid @flow annotation
-    // 'flowtype/require-valid-file-annotation': "error",
-    // // enforces consistent spacing after the type annotation colon
-    // 'flowtype/space-after-type-colon': ["error", 'always'],
-    // // enforces consistent spacing before the type annotation colon
-    // 'flowtype/space-before-type-colon': ["error", 'never'],
-    // // enforces a consistent naming pattern for type aliases
-    // 'flowtype/type-id-match': "off",
-    // // marks Flow type alias declarations as used
-    // 'flowtype/use-flow-type': "off",
-    // // checks for simple Flow syntax errors
-    // 'flowtype/valid-syntax': "error"
+    "react/sort-prop-types": "warn"
   }
 };
