@@ -17,14 +17,16 @@ export default class App extends Component {
   }
 
   onDrop(acceptedFiles) {
-    uploadFile(acceptedFiles[0]).then(res => {
-      this.setState({
-        files: acceptedFiles,
-        dimensions: res.dimensions,
-        histogram: res.histogram,
-        src: res.objectUrl
-      });
-    });
+    uploadFile(acceptedFiles[0]).then(
+      (res => {
+        this.setState({
+          files: acceptedFiles,
+          dimensions: res.dimensions,
+          histogram: res.histogram,
+          src: res.objectUrl
+        });
+      })
+    );
   }
 
   render() {
@@ -52,6 +54,6 @@ export default class App extends Component {
          </div>
         }
       </div>
-    )
+    );
   }
 }
