@@ -44,12 +44,12 @@ export default class App extends Component {
           </div>
         </div>
         {this.state.files.length > 0 &&
-          <div className={styles.appImagePreview}>
-              <p>Original Image:</p>
-                <img src={this.state.files[0].preview} />
-                  <p> Cropped image:</p>
-                    <img src={this.state.src} />
-          </div>
+         <div className={styles.appImagePreview}>
+           <p>Original Image:</p>
+           <img src={this.state.files[0].preview} />
+           <p> Cropped image:</p>
+           <img src={this.state.src} />
+         </div>
         }
       </div>
     )
