@@ -8,7 +8,7 @@ exports.processImage = function (filename) {
     if ('WebAssembly' in window) {
         var ip = new Module.ImageProcessor(filename);
 
-        ip.crop(700, 500, 1000, 500);
+        ip.crop(700, 500, 700, 500);
 
         var dims = ip.dimensions();
         results.dimensions.x = dims.get('x');

@@ -1,0 +1,46 @@
+.app-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  align-content: start;
+  align-items: stretch;
+  margin: 0;
+
+  > h1 {
+    order: 1;
+    flex: 0 0 100%;
+    align-self: start;
+    border: 1px solid black;
+    margin: 0;
+  }
+}
+
+.app-toolbox {
+  order: 2;
+  flex: 0 0 percentage(204px / 900px);
+  max-width: percentage(204px / 900px);
+
+  > .app-image-dimensions {
+    order: 1;
+    flex: 0 0 100;
+    border: 1px solid red;
+  }
+
+  > .app-image-histogram {
+    order: 2;
+    flex: 1 0 100%;
+    border: 1px solid green;
+  }
+}
+
+.app-image-preview {
+  order: 3;
+  flex: 0 0 100%;
+  border: 1px solid #cccc33;
+}
+
+@media screen and (min-width: 1024px) {
+  .app-image-preview {
+    flex: 0 0 percentage(694px / 900px);
+  }
+}

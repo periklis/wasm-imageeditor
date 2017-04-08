@@ -12,7 +12,7 @@ find_package(JPEG REQUIRED)
 
 set(EM_LINK_FLAGS "-s DEMANGLE_SUPPORT=1 -s FORCE_FILESYSTEM=1 -s TOTAL_MEMORY=134217728")
 set(EM_BIND_FLAGS "--bind")
-set(EM_BINARYEN_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='native-wasm'\"")
+set(EM_BINARYEN_FLAGS "-s BINARYEN=1 -s \"BINARYEN_METHOD='asmjs,native-wasm'\"")
 
 #
 # Module

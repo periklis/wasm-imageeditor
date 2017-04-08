@@ -1,7 +1,9 @@
-.dropzone {
-  float:left;
-  }
+html,
+body,
+div#main {
+  margin: 0;
+}
 
-.imageData {
-  float:left;
-  }
+img {
+  max-width: 100;
+}
