@@ -4,25 +4,18 @@ import PropTypes from 'prop-types';
 
 export default class EditCanvas extends Component {
   static propTypes = {
-    modifiedSrc: PropTypes.string,
-    originalSrc: PropTypes.string
+    imageSrc: PropTypes.string
   };
 
   static defaultProps = {
-    modifiedSrc: '',
-    originalSrc: ''
+    imageSrc: ''
   };
 
   render() {
     return (
       <div className={styles.appImagePreview}>
-        <p>Original Image:</p>
-        {this.props.originalSrc &&
-         <div>
-           <img src={this.props.originalSrc} />
-           <p> Cropped image:</p>
-           <img src={this.props.modifiedSrc} />
-         </div>
+        {this.props.imageSrc &&
+         <img src={this.props.imageSrc} />
         }
       </div>
     );
