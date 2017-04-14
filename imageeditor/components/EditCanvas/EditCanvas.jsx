@@ -1,7 +1,17 @@
 import styles from './editcanvas.scss';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class EditCanvas extends Component {
+  static propTypes = {
+    modifiedSrc: PropTypes.string,
+    originalSrc: PropTypes.string
+  };
+
+  static defaultProps = {
+    modifiedSrc: '',
+    originalSrc: ''
+  };
 
   render() {
     return (
