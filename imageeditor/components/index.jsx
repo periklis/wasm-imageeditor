@@ -3,7 +3,7 @@ import './index.scss';
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './app.jsx';
+import App from './App/app.jsx';
 
 render(
   <AppContainer><App/></AppContainer>,
@@ -11,8 +11,8 @@ render(
 );
 
 if (module && module.hot) {
-  module.hot.accept('./app.jsx', () => {
-    const App = require('./app.jsx').default;
+  module.hot.accept('./App/app.jsx', () => {
+    const App = require('./App/app.jsx').default;
     render(
       <AppContainer>
         <App/>

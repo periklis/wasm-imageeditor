@@ -111,7 +111,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpack({
-      template: path.resolve(rootDir, 'imageeditor', 'index.html')
+      template: path.resolve(rootDir, 'imageeditor', 'components/index.html')
     })
   ],
   resolve: {

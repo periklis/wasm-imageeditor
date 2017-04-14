@@ -1,5 +1,5 @@
-var processImage = require('./wasm').processImage;
-var makeFs = require('./wasm').makeFs;
+var processImage = require('../../libs/wasm').processImage;
+var makeFs = require('../../libs/wasm').makeFs;
 
 exports.uploadFile = function (file) {
   return fetch(file.preview)
