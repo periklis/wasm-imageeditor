@@ -19,14 +19,14 @@ module.exports = merge(config, {
   devtool: 'cheap-module-source-map',
   entry: {
     application: [
-      './src/index.jsx'
+      './imageeditor/index.jsx'
     ]
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(rootDir, 'src/images'),
+        from: path.resolve(rootDir, 'imageeditor/images'),
         to: path.resolve(rootDir, 'build/images')
       }
     ]),
@@ -59,7 +59,7 @@ module.exports = merge(config, {
         test: /\.scss$/,
         exclude: /[\/\\]node_modules[\/\\]/,
         include: [
-          path.resolve(rootDir, 'src')
+          path.resolve(rootDir, 'imageeditor')
         ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',

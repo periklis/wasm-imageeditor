@@ -23,7 +23,7 @@ module.exports = merge(config, {
   entry: {
     application: [
       'react-hot-loader/patch',
-      './src/index.jsx'
+      './imageeditor/index.jsx'
     ]
   },
   plugins: [
