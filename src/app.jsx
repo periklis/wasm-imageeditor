@@ -33,9 +33,10 @@ export default class App extends Component {
     return (
       <div className={styles.appContainer}>
         <h1>WebAssembly ImageEditor</h1>
-
         <div className={styles.appToolbox}>
-          <Dropzone multiple={false} onDrop={this.onDrop.bind(this)}>
+          <Dropzone className={styles.appDropzone}
+                    multiple={false}
+                    onDrop={this.onDrop.bind(this)}>
             <div>Try dropping some files here, or click to select files to upload.</div>
           </Dropzone>
           <div className={styles.appImageDimensions}>
@@ -45,14 +46,16 @@ export default class App extends Component {
             <p>Histogram: N/A</p>
           </div>
         </div>
-        {this.state.files.length > 0 &&
-         <div className={styles.appImagePreview}>
-           <p>Original Image:</p>
-           <img src={this.state.files[0].preview} />
-           <p> Cropped image:</p>
-           <img src={this.state.src} />
-         </div>
-        }
+        <div className={styles.appImagePreview}>
+          <p>Original Image:</p>
+          {this.state.files.length > 0 &&
+           <div>
+             <img src={this.state.files[0].preview} />
+             <p> Cropped image:</p>
+             <img src={this.state.src} />
+           </div>
+          }
+        </div>
       </div>
     );
   }
