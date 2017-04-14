@@ -1,7 +1,8 @@
 import styles from './app.scss';
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone';
-import { uploadFile } from './app';
+import { uploadFile } from './app.js';
+import Toolbox from '../Toolbox/Toolbox.jsx';
+import EditCanvas from '../EditCanvas/EditCanvas.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -30,32 +31,24 @@ export default class App extends Component {
   }
 
   render() {
+    const toolBoxProps = {
+      dimensions: this.state.dimensions,
+      histogram: this.state.histogram
+    };
+    const editCanvasProps = {
+      originalSrc: this.state.files.length > 0 ? this.state.files[0].preview : false,
+      modifiedSrc: this.state.src
+    };
+
     return (
       <div className={styles.appContainer}>
         <h1>WebAssembly ImageEditor</h1>
-        <div className={styles.appToolbox}>
-          <Dropzone className={styles.appDropzone}
-                    multiple={false}
-                    onDrop={this.onDrop.bind(this)}>
-            <div>Try dropping some files here, or click to select files to upload.</div>
-          </Dropzone>
-          <div className={styles.appImageDimensions}>
-            <p>Dimensions: {this.state.dimensions.x} x {this.state.dimensions.y}</p>
-          </div>
-          <div className={styles.appImageHistogram}>
-            <p>Histogram: N/A</p>
-          </div>
-        </div>
-        <div className={styles.appImagePreview}>
-          <p>Original Image:</p>
-          {this.state.files.length > 0 &&
-           <div>
-             <img src={this.state.files[0].preview} />
-             <p> Cropped image:</p>
-             <img src={this.state.src} />
-           </div>
-          }
-        </div>
+
+        <Toolbox dimensions={toolBoxProps.dimensions}
+                 histogram={toolBoxProps.histogram}
+                 onDrop={this.onDrop.bind(this)}/>
+        <EditCanvas originalSrc={editCanvasProps.originalSrc}
+                    modifiedSrc={editCanvasProps.modifiedSrc}/>
       </div>
     );
   }
