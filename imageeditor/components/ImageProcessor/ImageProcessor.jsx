@@ -5,8 +5,8 @@ import WasmImageProcessor from '../../libs/wasm.js';
 export default class ImageProcessor extends Component {
   static propTypes = {
     buffer: PropTypes.object,
-    filename: PropTypes.string,
-    onUpload: PropTypes.func
+    filename: PropTypes.string.isRequired,
+    onUpload: PropTypes.func.isRequired
   }
 
   static defaultProps = {
