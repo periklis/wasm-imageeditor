@@ -18,16 +18,16 @@ export default class Toolbox extends Component {
 
   render() {
     return (
-      <div className={styles.appToolbox}>
-        <Dropzone className={styles.appDropzone}
+      <div className={styles.toolbox}>
+        <Dropzone className={styles.dropzone}
                   multiple={false}
                   onDrop={this.props.onDrop}>
           <div>Try dropping some files here, or click to select files to upload.</div>
         </Dropzone>
-        <div className={styles.appImageDimensions}>
+        <div className={styles.imageDimensions}>
           <p>Dimensions: {this.props.dimensions.x} x {this.props.dimensions.y}</p>
         </div>
-        <div className={styles.appImageHistogram}>
+        <div className={styles.imageHistogram}>
           <p>Histogram: {this.props.histogram.toString().substring(1,5) + "..."}</p>
         </div>
       </div>

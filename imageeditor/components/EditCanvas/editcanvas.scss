@@ -1,4 +1,6 @@
-.app-image-preview {
+@import "~Components/main";
+
+.edit-canvas {
   flex: 1;
-  border: 1px solid #cccc33;
+  border: 1px solid $editCanvasBorderColor;
 }

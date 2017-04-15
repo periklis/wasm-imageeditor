@@ -13,7 +13,7 @@ export default class EditCanvas extends Component {
 
   render() {
     return (
-      <div className={styles.appImagePreview}>
+      <div className={styles.editCanvas}>
         {this.props.imageSrc &&
          <img src={this.props.imageSrc} />
         }
