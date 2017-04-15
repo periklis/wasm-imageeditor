@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('./webpack.config.base');
 const path = require('path');
 const webpack = require('webpack');

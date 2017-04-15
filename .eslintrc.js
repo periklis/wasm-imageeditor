@@ -25,7 +25,10 @@ module.exports = {
   ],
 
   "globals": {
-    "define": true
+    "define": true,
+    "FS": true,     // Emscripten Filesystem Abstraction
+    "IDBFS": true,  // Emscripten Indexed DB Constant
+    "Module": true  // Emscripten Module Shell
   },
 
   "rules": {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import WasmImageProcessor from '../../libs/wasm.js';
+import WasmImageProcessor from 'Libs/wasm.js';
 
 export default class ImageProcessor extends Component {
   static propTypes = {

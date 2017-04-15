@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
@@ -19,7 +18,7 @@ module.exports = merge(config, {
   devtool: 'cheap-module-source-map',
   entry: {
     application: [
-      './imageeditor/index.jsx'
+      './imageeditor/components/index.jsx'
     ]
   },
   plugins: [
@@ -32,11 +31,15 @@ module.exports = merge(config, {
     ]),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
+        /* eslint-disable camelcase */
         screw_ie8: true,
         keep_fnames: true
+        /* eslint-enable camelcase */
       },
       compress: {
+        /* eslint-disable camelcase */
         screw_ie8: true
+        /* eslint-enable camelcase */
       },
       output: {
         comments: false

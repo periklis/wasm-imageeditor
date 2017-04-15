@@ -3,7 +3,7 @@ class WasmImageProcessor {
   prepare = () => {
     FS.mkdir('/data');
     FS.mount(IDBFS, {}, '/data');
-    FS.syncfs(true, (err) => {if (err) console.log(err);});
+    FS.syncfs(true, () => {});
   };
 
   process = (buffer, filename) => {

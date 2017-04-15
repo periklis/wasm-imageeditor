@@ -1,10 +1,5 @@
-'use strict';
-const autoprefixer = require('autoprefixer');
 const HtmlWebpack = require('html-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-
 const rootDir = path.resolve(__dirname, '.');
 
 module.exports = {
@@ -115,6 +110,10 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.scss'],
+    alias: {
+      Components: path.resolve(rootDir, 'imageeditor/components'),
+      Libs: path.resolve(rootDir, 'imageeditor/libs')
+    }
   }
 };

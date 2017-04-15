@@ -1,8 +1,8 @@
 import styles from './app.scss';
 import React, { Component } from 'react';
-import ImageProcessor from '../ImageProcessor/ImageProcessor.jsx';
-import Toolbox from '../Toolbox/Toolbox.jsx';
-import EditCanvas from '../EditCanvas/EditCanvas.jsx';
+import ImageProcessor from 'Components/ImageProcessor/ImageProcessor.jsx';
+import Toolbox from 'Components/Toolbox/Toolbox.jsx';
+import EditCanvas from 'Components/EditCanvas/EditCanvas.jsx';
 
 export default class App extends Component {
 
