@@ -2,7 +2,7 @@
   "name": "wasm-imageeditor",
   "version": "1.0.0",
   "description": "WebAssembly based Imageeditor",
-  "main": "src/app.js",
+  "main": "imageeditor/Components/index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors",
     "prod": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --progress",
@@ -11,6 +11,10 @@
   },
   "author": "Periklis Tsirakidis",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://git.mayflower.de/periklis.tsirakidis/wasm-imageeditor.git"
+  },
   "dependencies": {
     "autoprefixer": "^6.7.7",
     "babel-runtime": "^6.23.0",
