@@ -19,11 +19,10 @@ npm run start
 Production:
 ```
 npm run build
-cd build
-python -m SimpleHTTPServer 9000
+npm run server
 ```
 
-Open http://localhost:9000/ in your browser and check console in Web Developer Tools.
+Open http://localhost:8080/ in your browser and check console in Web Developer Tools.
 
 ## Backlog
 - [x] Remove boost example code due to licensing issues

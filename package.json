@@ -15,7 +15,8 @@
     "start": "webpack-dev-server --config webpack.config.js --env.target development --progress --colors",
     "build": "webpack --config webpack.config.js --env.target production --progress",
     "lint:js": "eslint -c .eslintrc.js imageeditor/**",
-    "lint:sass": "sasslint imageeditor/**/*.scss -v -q"
+    "lint:sass": "sasslint imageeditor/**/*.scss -v -q",
+    "server": "http-server build/ -p 8080"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
