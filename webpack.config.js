@@ -280,7 +280,19 @@ const productionConfig = () => {
           exclude: /[\/\\]src[\/\\]/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
+            use: [
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: [
+                    autoprefixer
+                  ]
+                }
+              }
+            ]
           })
         },
         {
