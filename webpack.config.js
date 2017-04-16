@@ -24,7 +24,12 @@ const commonConfig = {
       {
         test: /\.(js|jsx)?$/,
         exclude: /[\/\\]node_modules[\/\\]/,
-        use: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
+        }
       },
       {
         test: /\.(png|jpg|jpeg|gif|avg)$/,
@@ -49,6 +54,9 @@ const commonConfig = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
     new HtmlWebpack({
       template: path.resolve(rootDir, 'imageeditor', 'components/index.html')
     })
