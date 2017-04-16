@@ -14,6 +14,11 @@ const GLOBALS = {
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 };
 
+const extractSass = new ExtractTextPlugin({
+  filename: 'application.bundle.css',
+  disable: process.env.NODE_ENV === 'development'
+});
+
 module.exports = merge(config, {
   devtool: 'cheap-module-source-map',
   entry: {
@@ -30,12 +35,6 @@ module.exports = merge(config, {
       }
     ]),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: {
-        /* eslint-disable camelcase */
-        screw_ie8: true,
-        keep_fnames: true
-        /* eslint-enable camelcase */
-      },
       compress: {
         /* eslint-disable camelcase */
         screw_ie8: true
@@ -49,14 +48,10 @@ module.exports = merge(config, {
       minimize: true,
       debug: false
     }),
-    new ExtractTextPlugin({
-      filename: 'application.bundle.css',
-      allChunks: true,
-      disable: false
-    })
+    extractSass
   ],
   module: {
-    noParse: /\.min\.js$/,
+    noParse: /\.bundle\.js$/,
     rules: [
       {
         test: /\.scss$/,
@@ -64,13 +59,41 @@ module.exports = merge(config, {
         include: [
           path.resolve(rootDir, 'imageeditor')
         ],
-        use: ExtractTextPlugin.extract({
+        use: extractSass.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader', options: { camelCase: true, sourceMap: true } },
-            { loader: 'postcss-loader' },
-            { loader: 'sass-loader', query: { outputStyle: 'compressed' } }
+            {
+              loader: 'css-loader',
+              options: {
+                camelCase: true,
+                import: true,
+                minimize: true,
+                modules: true,
+                sourceMap: false,
+                importLoaders: 2
+              }
+            },
+            {
+              loader: 'postcss-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                outputStyle: 'compressed',
+                includePaths: [
+                  path.resolve(rootDir, 'imageeditor/Components')
+                ]
+              }
+            }
           ]
+        })
+      },
+      {
+        test: /\.css$/,
+        exclude: /[\/\\]src[\/\\]/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader']
         })
       },
       {

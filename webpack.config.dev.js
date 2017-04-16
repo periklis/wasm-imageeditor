@@ -24,6 +24,71 @@ module.exports = merge(config, {
       './imageeditor/components/index.jsx'
     ]
   },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        exclude: /[\/\\]node_modules[\/\\]/,
+        use: [
+          {
+            loader: 'style-loader',
+            query: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader',
+            query: {
+              camelCase: true,
+              modules: true,
+              sourceMap: true,
+              importLoaders: 2,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: /[\/\\]src[\/\\]/,
+        use: [
+          {
+            loader: 'style-loader',
+            query: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: /[\/\\]node_modules[\/\\]/,
+        use: [
+          {
+            loader: 'style-loader',
+            query: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 2,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin(GLOBALS)
