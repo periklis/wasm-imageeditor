@@ -18,7 +18,8 @@ npm run start
 
 Production:
 ```
-npm run start
+npm run build
+cd build
 python -m SimpleHTTPServer 9000
 ```
 
