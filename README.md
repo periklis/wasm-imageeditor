@@ -11,6 +11,17 @@ make
 ```
 
 ## Run
+Development:
+```
+npm run start
+```
+
+Production:
+```
+npm run start
+python -m SimpleHTTPServer 9000
+```
+
 Open http://localhost:9000/ in your browser and check console in Web Developer Tools.
 
 ## Backlog
