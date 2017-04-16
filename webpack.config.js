@@ -17,7 +17,7 @@ const commonConfig = {
   },
   output: {
     publicPath: '/',
-    filename: '[name].bundle.js',
+    filename: '[name].[hash:8].js',
     path: path.resolve(rootDir, 'build')
   },
   module: {
@@ -55,15 +55,16 @@ const commonConfig = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+    new HtmlWebpack({
+      template: path.resolve(rootDir, 'imageeditor', 'components/index.html')
     }),
     new webpack.BannerPlugin({
       banner: new GitRevisionPlugin().version()
     }),
-    new HtmlWebpack({
-      template: path.resolve(rootDir, 'imageeditor', 'components/index.html')
-    })
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -285,7 +286,6 @@ const productionConfig = () => {
 };
 
 module.exports = (env) => {
-
   if (env.target == 'production') {
     return productionConfig();
   }
