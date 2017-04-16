@@ -1,6 +1,6 @@
-@import "~Components/main.scss";
+@import '~Components/main';
 
 .edit-canvas {
+  border: 1px solid $editcanvas-border-color;
   flex: 1;
-  border: 1px solid $editCanvasBorderColor;
 }

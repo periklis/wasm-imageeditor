@@ -1,14 +1,12 @@
-/*
- * Media query breakpoints
- */
-$phonePortraitMaxWidth: 360px;
-$tabletPortraitMaxWidth: 768px;
+// Media query breakpoints
+$phone-portrait-max-width: 360px;
+$tablet-portrait-max-width: 768px;
 
-/*
- * Color Definitions
- */
-$mainBorderColor: black;
-$toolboxBorderColor: blue;
-$dimensionsBorderColor: green;
-$histogramBorderColor: red;
-$editCanvasBorderColor: yellow;
+// Color Definitions
+$main-border-color: #000;
+$header-border-color: #000;
+$toolbox-border-color: #0000ff;
+$dropzone-border-color: #666;
+$dimensions-border-color: #008000;
+$histogram-border-color: #ff0000;
+$editcanvas-border-color: #ffff00;

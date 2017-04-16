@@ -23,6 +23,20 @@ const commonConfig = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /[\/\\]node_modules[\/\\]/,
+        enforce: 'pre',
+        use: [
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              failOnError: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(js|jsx)?$/,
         exclude: /[\/\\]node_modules[\/\\]/,
         use: {
@@ -80,7 +94,12 @@ const developmentConfig = () => {
     devServer: {
       contentBase: path.resolve(rootDir, 'build'),
       port: process.env.HOST,
-      host: process.env.PORT
+      host: process.env.PORT,
+      hot: true,
+      overlay: {
+        errors: true,
+        warnings: true
+      }
     },
     devtool: 'source-map',
     entry: {
@@ -119,6 +138,12 @@ const developmentConfig = () => {
             },
             {
               loader: 'sass-loader'
+            },
+            {
+              loader: 'sasslint-loader',
+              options: {
+                failOnError: true
+              }
             }
           ]
         },

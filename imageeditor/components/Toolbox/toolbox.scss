@@ -1,26 +1,26 @@
-@import "~Components/main.scss";
+@import '~Components/main';
 
 .toolbox {
-  flex: 0.2;
-  border: 1px solid $toolboxBorderColor;
+  border: 1px solid $toolbox-border-color;
+  flex: .2;
 
   .dropzone {
-    border-width: 2px;
-    border-color: rgb(102, 102, 102);
-    border-style: dashed;
+    border-color: $dropzone-border-color;
     border-radius: 5px;
+    border-style: dashed;
+    border-width: 2px;
   }
 
   .image-dimensions {
-    border: 1px solid $dimensionsBorderColor;
+    border: 1px solid $dimensions-border-color;
   }
 
   .image-histogram {
-    border: 1px solid $histogramBorderColor;
+    border: 1px solid $histogram-border-color;
   }
 }
 
-@media all and (max-width: $tabletPortraitMaxWidth) {
+@media all and (max-width: $tablet-portrait-max-width) {
   .toolbox {
     display: flex;
     flex: 1 100%;
@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width: $phonePortraitMaxWidth) {
+@media all and (max-width: $phone-portrait-max-width) {
   .toolbox {
     .dropzone,
     .image-dimensions,

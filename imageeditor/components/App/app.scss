@@ -1,11 +1,13 @@
+@import '~Components/main';
+
 .app-container {
   display: flex;
   flex-flow: row wrap;
   margin: 0;
 
   > h1 {
+    border: 1px solid $header-border-color;
     flex: 1 100%;
-    border: 1px solid black;
     margin: 0;
   }
 }
