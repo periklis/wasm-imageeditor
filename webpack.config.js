@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const HtmlWebpack = require('html-webpack-plugin');
 
 const commonConfig = {
@@ -56,6 +57,9 @@ const commonConfig = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
+    }),
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version()
     }),
     new HtmlWebpack({
       template: path.resolve(rootDir, 'imageeditor', 'components/index.html')
