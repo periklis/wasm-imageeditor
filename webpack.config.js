@@ -1,9 +1,10 @@
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const rootDir = path.resolve(__dirname, '.');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpack = require('html-webpack-plugin');
 
 const commonConfig = {
@@ -96,7 +97,12 @@ const developmentConfig = () => {
               }
             },
             {
-              loader: 'postcss-loader'
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer
+                ]
+              }
             },
             {
               loader: 'sass-loader'
@@ -134,7 +140,12 @@ const developmentConfig = () => {
               }
             },
             {
-              loader: 'postcss-loader'
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer
+                ]
+              }
             }
           ]
         }
@@ -207,7 +218,12 @@ const productionConfig = () => {
                 }
               },
               {
-                loader: 'postcss-loader'
+                loader: 'postcss-loader',
+                options: {
+                  plugins: [
+                    autoprefixer
+                  ]
+                }
               },
               {
                 loader: 'sass-loader',
@@ -234,7 +250,19 @@ const productionConfig = () => {
           exclude: /[\/\\]node_modules[\/\\]/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
+            use: [
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: [
+                    autoprefixer
+                  ]
+                }
+              }
+            ]
           })
         }
       ]
