@@ -78,7 +78,7 @@ module.exports = merge(config, {
             query: {
               modules: true,
               sourceMap: true,
-              importLoaders: 2,
+              importLoaders: 1,
               localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
             }
           },
