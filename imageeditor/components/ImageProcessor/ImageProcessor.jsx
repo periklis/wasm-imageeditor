@@ -37,10 +37,7 @@ export default class ImageProcessor extends Component {
 
   componentDidUpdate() {
     if (this.props.buffer != null){
-      const results = WasmImageProcessor.process(
-        this.props.buffer,
-        this.props.filename
-      );
+      const results = WasmImageProcessor.save(this.props.buffer, this.props.filename);
       this.props.onUpload(results);
     }
   }

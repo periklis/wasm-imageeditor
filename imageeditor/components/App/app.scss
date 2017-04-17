@@ -10,3 +10,9 @@
     margin: 0;
   }
 }
+
+@media all and (max-width: $tablet-portrait-max-width) {
+  .app-container {
+    flex-flow: column wrap;
+    }
+}

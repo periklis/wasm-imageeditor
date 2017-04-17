@@ -29,7 +29,7 @@ Open http://localhost:8080/ in your browser and check console in Web Developer T
 - [x] Make cmake target build path more webpack friendly without symbolic links
 - [x] Replace --preload-file from src/imageprocessor/CMakeLists.txt:7 with file upload
 - [x] Refactor loadWasm to a more robust bootstrap process for ImageProcessor
-- [ ] Add react-based UI for drawing canvas and graphic manipulation controls
+- [x] Add react-based UI for drawing canvas and graphic manipulation controls
 - [x] Add Boost/Gil based ImageProcessor API for resize and crop
 - [ ] Re-enable ImageProcessor::resize when solution for boost::gil numeric extension found
 - [x] Refactor lib/* to cmake package system on emscripten toolchain

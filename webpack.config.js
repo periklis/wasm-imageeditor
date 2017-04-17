@@ -230,6 +230,11 @@ const productionConfig = () => {
           to: path.resolve(rootDir, 'build/images')
         }
       ]),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           /* eslint-disable camelcase */
@@ -296,13 +301,17 @@ const productionConfig = () => {
             fallback: 'style-loader',
             use: [
               {
-                loader: 'css-loader'
+                loader: 'css-loader',
+                options: {
+                  import: true,
+                  modules: true
+                }
               },
               {
                 loader: 'postcss-loader',
                 options: {
                   plugins: [
-                    autoprefixer
+                    cssnext
                   ]
                 }
               }
@@ -322,7 +331,7 @@ const productionConfig = () => {
                 loader: 'postcss-loader',
                 options: {
                   plugins: [
-                    autoprefixer
+                    cssnext
                   ]
                 }
               }
