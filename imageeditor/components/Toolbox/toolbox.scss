@@ -1,22 +1,22 @@
 @import '~Components/main';
 
 .toolbox {
-  border: 1px solid $toolbox-border-color;
   flex: .2;
 
-  .dropzone {
+  .dropzone-area {
     border-color: $dropzone-border-color;
     border-radius: 5px;
     border-style: dashed;
     border-width: 2px;
-  }
+    max-height: 200px;
+    max-width: 200px;
+    padding: .3em;
 
-  .image-dimensions {
-    border: 1px solid $dimensions-border-color;
-  }
-
-  .image-histogram {
-    border: 1px solid $histogram-border-color;
+    > p {
+      height: 200px;
+      white-space: pre-wrap;
+      width: 200px;
+    }
   }
 }
 
@@ -27,6 +27,7 @@
     flex-flow: row wrap;
 
     .dropzone,
+    .dimensions,
     .image-dimensions,
     .image-dimensions {
       flex: 1;
@@ -37,6 +38,7 @@
 @media all and (max-width: $phone-portrait-max-width) {
   .toolbox {
     .dropzone,
+    .dimensions,
     .image-dimensions,
     .image-dimensions {
       flex: 1 100%;

@@ -1,4 +1,3 @@
-import 'normalize.css/normalize.css';
 import './index.scss';
 import React from 'react';
 import { render } from 'react-dom';

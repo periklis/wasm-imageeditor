@@ -5,8 +5,7 @@
   flex-flow: row wrap;
   margin: 0;
 
-  > h1 {
-    border: 1px solid $header-border-color;
+  .app-bar {
     flex: 1 100%;
     margin: 0;
   }

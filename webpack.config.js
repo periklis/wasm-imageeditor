@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer');
+const cssnext = require('postcss-cssnext');
 const path = require('path');
 const rootDir = path.resolve(__dirname, '.');
 const webpack = require('webpack');
@@ -132,7 +133,7 @@ const developmentConfig = () => {
               loader: 'postcss-loader',
               options: {
                 plugins: [
-                  autoprefixer
+                  cssnext
                 ]
               }
             },
@@ -156,7 +157,20 @@ const developmentConfig = () => {
               query: { sourceMap: true }
             },
             {
-              loader: 'css-loader'
+              loader: 'css-loader',
+              options: {
+                import: true,
+                modules: true,
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  cssnext
+                ]
+              }
             }
           ]
         },
@@ -181,7 +195,7 @@ const developmentConfig = () => {
               loader: 'postcss-loader',
               options: {
                 plugins: [
-                  autoprefixer
+                  cssnext
                 ]
               }
             }
