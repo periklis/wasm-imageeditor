@@ -8,55 +8,26 @@ class WasmImageProcessor {
 
   resize = (filename, width, height) => {
     const targetFilename = '/data/resized.jpg';
-
-    let results = {
-      dimensions: {x:0, y:0},
-      histogram: [],
-      objectUrl: ''
-    };
-
-    FS.writeFile(
-      targetFilename,
-      FS.readFile(filename, {encoding: 'binary'}),
-      {encoding: 'binary'}
-    );
+    this.preProcess(filename, targetFilename);
 
     const ip = new Module.ImageProcessor(targetFilename);
 
     ip.crop(0, 0, width, height);
 
-    const dims = ip.dimensions();
-    results.dimensions.x = dims.get('x');
-    results.dimensions.y = dims.get('y');
-
-    const histogram = ip.histogram();
-    for(var i=0; i < histogram.size();i++){
-      results.histogram.push(histogram.get(i));
-    }
+    const results = this.postProcess(
+      targetFilename,
+      ip.dimensions(),
+      ip.histogram()
+    );
 
     ip.delete();
-
-    const file = FS.readFile(targetFilename, {encoding: 'binary'});
-    const blob = new Blob([new Uint8Array(file)], {type: 'application/image'});
-    results.objectUrl = URL.createObjectURL(blob);
 
     return results;
   };
 
   zoom = (filename, zoomFactor) => {
     const targetFilename = '/data/resized.jpg';
-
-    let results = {
-      dimensions: {x:0, y:0},
-      histogram: [],
-      objectUrl: ''
-    };
-
-    FS.writeFile(
-      targetFilename,
-      FS.readFile(filename, {encoding: 'binary'}),
-      {encoding: 'binary'}
-    );
+    this.preProcess(filename, targetFilename);
 
     const ip = new Module.ImageProcessor(targetFilename);
     const dims = ip.dimensions();
@@ -65,31 +36,18 @@ class WasmImageProcessor {
 
     ip.crop(0, 0, newWidth, newHeight);
 
-    const newDims = ip.dimensions();
-    results.dimensions.x = newDims.get('x');
-    results.dimensions.y = newDims.get('y');
-
-    const histogram = ip.histogram();
-    for(var i=0; i < histogram.size();i++){
-      results.histogram.push(histogram.get(i));
-    }
+    const results = this.postProcess(
+      targetFilename,
+      ip.dimensions(),
+      ip.histogram()
+    );
 
     ip.delete();
-
-    const file = FS.readFile(targetFilename, {encoding: 'binary'});
-    const blob = new Blob([new Uint8Array(file)], {type: 'application/image'});
-    results.objectUrl = URL.createObjectURL(blob);
 
     return results;
   }
 
   save = (buffer, filename) => {
-    let results = {
-      dimensions: {x:0, y:0},
-      histogram: [],
-      objectUrl: ''
-    };
-
     FS.writeFile(
       filename,
       new Uint8Array(buffer),
@@ -97,17 +55,33 @@ class WasmImageProcessor {
     );
 
     const ip = new Module.ImageProcessor(filename);
+    const results = this.postProcess(filename, ip.dimensions(), ip.histogram());
+    ip.delete();
 
-    const dims = ip.dimensions();
-    results.dimensions.x = dims.get('x');
-    results.dimensions.y = dims.get('y');
+    return results;
+  }
 
-    const histogram = ip.histogram();
+  preProcess = (sourceFilename, targetFilename) => {
+    FS.writeFile(
+      targetFilename,
+      FS.readFile(sourceFilename, {encoding: 'binary'}),
+      {encoding: 'binary'}
+    );
+  }
+
+  postProcess = (filename, dimensions, histogram) => {
+    let results = {
+      dimensions: {x:0, y:0},
+      histogram: [],
+      objectUrl: ''
+    };
+
+    results.dimensions.x = dimensions.get('x');
+    results.dimensions.y = dimensions.get('y');
+
     for(var i=0; i < histogram.size();i++){
       results.histogram.push(histogram.get(i));
     }
-
-    ip.delete();
 
     const file = FS.readFile(filename, {encoding: 'binary'});
     const blob = new Blob([new Uint8Array(file)], {type: 'application/image'});

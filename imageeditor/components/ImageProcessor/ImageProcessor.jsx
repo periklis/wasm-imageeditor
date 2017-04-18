@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import WasmImageProcessor from 'Libs/wasm.js';
 
 export default class ImageProcessor extends Component {
   static propTypes = {
-    buffer: PropTypes.object,
-    filename: PropTypes.string.isRequired,
-    onUpload: PropTypes.func.isRequired
+    binArguments: PropTypes.string,
+    environment: PropTypes.string.isRequired,
+    locateMemFile: PropTypes.func,
+    logReadFiles: PropTypes.bool,
+    noExitRuntime: PropTypes.bool,
+    noInitialRun: PropTypes.bool,
+    onPrint: PropTypes.func,
+    onPrintErr: PropTypes.func,
+    postRun: PropTypes.array,
+    preInit: PropTypes.array,
+    preRun: PropTypes.array,
+    shellFilename: PropTypes.string.isRequired,
+    wasmFilename: PropTypes.string.isRequired
   }
 
   static defaultProps = {
-    buffer: null,
-    filename: '',
-    onUpload: () => {}
+    binArguments: '',
+    environment: 'WEB',
+    locateMemFile: () => {},
+    logReadFiles: false,
+    noExitRuntime: false,
+    noInitialRun: false,
+    onPrint: () => {},
+    onPrintErr: () => {},
+    postRun: [],
+    preInit: [],
+    preRun: [],
+    shellFilename: '',
+    wasmFilename: ''
   }
 
   componentDidMount() {
-    fetch('imageprocessor.wasm')
+    fetch(this.props.wasmFilename)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
+        Module.arguments = this.props.binArguments;
+        Module.environment = this.props.environment;
+        module.locateFile = this.props.locateMemFile;
+        Module.logReadFiles = this.props.logReadFiles;
+        Module.noExitRuntime = this.props.noExitRuntime;
+        Module.noInitialRun = this.props.noInitialRun;
+        Module.print = this.props.onPrint;
+        Module.printErr = this.props.onPrintErr;
+        Module.preInit = this.props.preInit;
+        Module.preRun = this.props.preRun;
+        Module.postRun = this.props.postRun;
         Module.wasmBinary = buffer;
-        Module.postRun = [WasmImageProcessor.prepare];
 
-        fetch('imageprocessor.js')
+        fetch(this.props.shellFilename)
           .then((response) => response.blob())
           .then((responseBlob) => {
             const script = document.createElement('script');
@@ -35,17 +64,9 @@ export default class ImageProcessor extends Component {
       });
   }
 
-  componentDidUpdate() {
-    if (this.props.buffer != null){
-      const results = WasmImageProcessor.save(this.props.buffer, this.props.filename);
-      this.props.onUpload(results);
-    }
-  }
-
   render() {
     return (
-      <div id="ImageProcessor">
-      </div>
+      <div id="ImageProcessor" />
     );
   }
 }
