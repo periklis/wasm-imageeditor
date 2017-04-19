@@ -34,6 +34,10 @@ export default class ImageProcessor extends Component {
     wasmFilename: ''
   }
 
+  componentWillMount = () => {
+    window.Module = {};
+  }
+
   componentDidMount() {
     fetch(this.props.wasmFilename)
       .then((response) => response.arrayBuffer())
