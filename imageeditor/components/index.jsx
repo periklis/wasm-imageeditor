@@ -10,24 +10,23 @@ import reducers from 'Reducers';
 
 let store = createStore(
   reducers, /* preloadedState, */
-  composeWithDevTools(
-    // other store enhancers if any
-  ) // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools()
 );
 
-render(
-  <AppContainer><Provider store={store}><App/></Provider></AppContainer>,
-  document.querySelector('#main')
+const target = document.querySelector('#webAsseblyImageEditor');
+
+const app = (
+  <AppContainer>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </AppContainer>
 );
+
+render(app, target);
 
 if (module && module.hot) {
   module.hot.accept('./App/app.jsx', () => {
-    const App = require('./App/app.jsx').default;
-    render(
-      <AppContainer>
-        <Provider store={store}><App/></Provider>
-      </AppContainer>,
-      document.querySelector('#main')
-    );
+    render(app, target);
   });
 }
