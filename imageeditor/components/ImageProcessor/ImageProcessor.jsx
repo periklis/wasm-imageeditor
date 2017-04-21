@@ -21,7 +21,7 @@ export default class ImageProcessor extends Component {
   static defaultProps = {
     binArguments: '',
     environment: 'WEB',
-    locateMemFile: null,
+    locateMemFile: undefined,
     logReadFiles: false,
     noExitRuntime: false,
     noInitialRun: false,

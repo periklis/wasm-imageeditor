@@ -1,4 +1,4 @@
-import {PRINT_CLEAR, PRINT_ADD} from 'Actions/PrintAction';
+import {PRINT_CLEAR, PRINT_COUT} from 'Actions';
 
 export default (state = {entries:[]}, action) => {
   switch(action.type) {
@@ -6,7 +6,7 @@ export default (state = {entries:[]}, action) => {
     return {
       entries: []
     };
-  case PRINT_ADD:
+  case PRINT_COUT:
     return {
       entries: [
         ...state.entries,

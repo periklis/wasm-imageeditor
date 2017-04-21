@@ -10,7 +10,7 @@ namespace mayflower {
 namespace wasm {
 std::map<std::string, long> ImageProcessor::dimensions()
 {
-  std::cout << "Calculating dimensions for path: " << path_;
+  std::cout << "Calculating dimensions for path: " << path_ << "\n";
   boost::gil::rgb8_image_t srcImg;
   jpeg_read_image(path_, srcImg);
   auto p = srcImg.dimensions();
@@ -24,7 +24,7 @@ std::map<std::string, long> ImageProcessor::dimensions()
 
 std::vector<int> ImageProcessor::histogram()
 {
-  std::cout << "Calculating histogram for path: " << path_;
+  std::cout << "Calculating histogram for path: " << path_ << "\n";
   boost::gil::rgb8_image_t srcImg;
   jpeg_read_image(path_, srcImg);
 
@@ -51,7 +51,7 @@ std::vector<int> ImageProcessor::histogram()
 
 void ImageProcessor::crop(int start_x, int start_y, int end_x, int end_y)
 {
-  std::cout << "Cropping image for  path: " << path_;
+  std::cout << "Cropping image for  path: " << path_ << "\n";
   boost::gil::rgb8_image_t srcImg;
   jpeg_read_image(path_, srcImg);
 
