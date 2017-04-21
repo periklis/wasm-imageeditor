@@ -9,6 +9,11 @@
     flex: 1 100%;
     margin: 0;
   }
+
+  .app-work-area {
+    flex: .8;
+    flex-flow: row wrap;
+    }
 }
 
 @media all and (max-width: $tablet-portrait-max-width) {

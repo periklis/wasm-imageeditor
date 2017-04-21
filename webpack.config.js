@@ -84,8 +84,11 @@ const commonConfig = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
+      Actions: path.resolve(rootDir, 'imageeditor/actions'),
       Components: path.resolve(rootDir, 'imageeditor/components'),
-      Libs: path.resolve(rootDir, 'imageeditor/libs')
+      Containers: path.resolve(rootDir, 'imageeditor/containers'),
+      Libs: path.resolve(rootDir, 'imageeditor/libs'),
+      Reducers: path.resolve(rootDir, 'imageeditor/reducers')
     }
   }
 };

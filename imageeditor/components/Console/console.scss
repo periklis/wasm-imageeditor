@@ -1,0 +1,13 @@
+@import '~Components/main';
+
+.console {
+  overflow-wrap: break-word;
+
+  .info {
+    color: $console-info-color;
+  }
+
+  .error {
+    color: $console-error-color;
+  }
+}

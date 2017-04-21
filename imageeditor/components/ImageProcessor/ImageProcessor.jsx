@@ -21,7 +21,7 @@ export default class ImageProcessor extends Component {
   static defaultProps = {
     binArguments: '',
     environment: 'WEB',
-    locateMemFile: () => {},
+    locateMemFile: null,
     logReadFiles: false,
     noExitRuntime: false,
     noInitialRun: false,
@@ -44,7 +44,7 @@ export default class ImageProcessor extends Component {
       .then((buffer) => {
         Module.arguments = this.props.binArguments;
         Module.environment = this.props.environment;
-        module.locateFile = this.props.locateMemFile;
+        Module.locateFile = this.props.locateMemFile;
         Module.logReadFiles = this.props.logReadFiles;
         Module.noExitRuntime = this.props.noExitRuntime;
         Module.noInitialRun = this.props.noInitialRun;
