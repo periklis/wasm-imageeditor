@@ -1,12 +1,12 @@
-import {PRINT_CLEAR, PRINT_COUT} from 'Actions';
+import {LOG_CLEAR, LOG_COUT} from 'Actions';
 
 export default (state = {entries:[]}, action) => {
   switch(action.type) {
-  case PRINT_CLEAR:
+  case LOG_CLEAR:
     return {
       entries: []
     };
-  case PRINT_COUT:
+  case LOG_COUT:
     return {
       entries: [
         ...state.entries,
