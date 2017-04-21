@@ -8,6 +8,7 @@
      'transform-runtime',
      'transform-decorators-legacy',
      'transform-class-properties',
+     'transform-object-rest-spread',
      'react-hot-loader/babel'
   ],
   "env": {
