@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import fetch from 'isomorphic-fetch';
 import { saveImage, resizeImage, zoomImage} from 'Actions';
 import App from 'Components/App/App';
 import WasmImageProcessor from 'Libs/wasm.js';
