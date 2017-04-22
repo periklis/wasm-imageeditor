@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import App from './App/app.jsx';
+import App from 'Containers/App';
 import reducers from 'Reducers';
 
 let store = createStore(
@@ -26,7 +26,7 @@ const app = (
 render(app, target);
 
 if (module && module.hot) {
-  module.hot.accept('./App/app.jsx', () => {
+  module.hot.accept('../containers/App.js', () => {
     render(app, target);
   });
 }

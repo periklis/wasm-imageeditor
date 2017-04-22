@@ -10,74 +10,45 @@ import WasmImageProcessor from 'Libs/wasm.js';
 
 export default class App extends Component {
   static propTypes = {
-    originalFilename: PropTypes.string.isRequired
+    dimensions: PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    histogram: PropTypes.array.isRequired,
+    imageSrc: PropTypes.string.isRequired,
+    onResize: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onZoom: PropTypes.func.isRequired,
+    originalFilename: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
+    dimensions: {
+      width: 0,
+      height: 0
+    },
+    histogram: [],
+    imageSrc: '',
+    onResize: () => {},
+    onSave: () => {},
+    onZoom: () => {},
     originalFilename: '/data/original.jpg'
   }
 
-  state = {
-    toolbox: {},
-    editCanvas: {},
-  }
-
-  onDrop = (acceptedFiles) => fetch(acceptedFiles[0].preview)
-    .then((response) => response.arrayBuffer())
-    .then((buffer) => {
-      const results = WasmImageProcessor.save(
-        buffer,
-        this.props.originalFilename
-      );
-
-      this.updateState(results);
-    });
-
-  onResize = (value) => {
-    const res = WasmImageProcessor.resize(
-      this.props.originalFilename,
-      value.width,
-      value.height
-    );
-    this.updateState(res);
-  }
-
-  onZoom = (value) => {
-    const res = WasmImageProcessor.zoom(
-      this.props.originalFilename,
-      value
-    );
-    this.updateState(res);
-  }
-
-  updateState = (newState) => {
-    this.setState({
-      toolbox: {
-        dimensions: newState.dimensions,
-        histogram: newState.histogram
-      },
-      editCanvas: {
-        imageSrc: newState.objectUrl
-      }
-    });
-  }
-
   render() {
-    const {toolbox, editCanvas} = this.state;
-
     return (
       <div className={styles.appContainer}>
         <AppBar title="WebAssembly ImageEditor"
                 className={styles.appBar} />
 
-        <Toolbox dimensions={toolbox.dimensions}
-                 histogram={toolbox.histogram}
-                 onDrop={this.onDrop}
-                 onResize={this.onResize}
-                 onZoom={this.onZoom} />
+        <Toolbox dimensions={this.props.dimensions}
+                 histogram={this.props.histogram}
+                 onDrop={this.props.onSave}
+                 onResize={this.props.onResize}
+                 onZoom={this.props.onZoom} />
 
         <div className={styles.appWorkArea}>
-          <EditCanvas imageSrc={editCanvas.imageSrc} />
+          <EditCanvas imageSrc={this.props.imageSrc} />
           <Console />
         </div>
 

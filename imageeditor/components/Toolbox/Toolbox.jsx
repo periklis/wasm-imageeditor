@@ -65,7 +65,7 @@ export default class Toolbox extends Component {
 
           <ListSubHeader caption='About the image' />
           <ListItem className={styles.imageDimensions}>
-            <p>Dimensions: {this.props.dimensions.x} x {this.props.dimensions.y}</p>
+            <p>Dimensions: {this.props.dimensions.width} x {this.props.dimensions.height}</p>
           </ListItem>
           <ListItem className={styles.imageHistogram}>
             <p>Histogram: {this.props.histogram.toString().substring(1,5) + "..."}</p>

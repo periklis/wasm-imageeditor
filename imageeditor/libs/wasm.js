@@ -71,13 +71,13 @@ class WasmImageProcessor {
 
   postProcess = (filename, dimensions, histogram) => {
     let results = {
-      dimensions: {x:0, y:0},
+      dimensions: {width:0, height:0},
       histogram: [],
       objectUrl: ''
     };
 
-    results.dimensions.x = dimensions.get('x');
-    results.dimensions.y = dimensions.get('y');
+    results.dimensions.width = dimensions.get('x');
+    results.dimensions.height = dimensions.get('y');
 
     for(var i=0; i < histogram.size();i++){
       results.histogram.push(histogram.get(i));
