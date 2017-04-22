@@ -1,10 +1,11 @@
-export const LOG_COUT = 'LOG_COUT';
-export const LOG_CLEAR = 'LOG_CLEAR';
+export const STDIO_TO_LOG = 'STDIO_TO_LOG';
+export const CLEAR_LOG = 'CLEAR_LOG';
 
-export function clear() {
-  return {type: LOG_CLEAR};
-}
+export const clearLog = () => ({
+  type: CLEAR_LOG
+});
 
-export function cout(value) {
-  return {type: LOG_COUT, value};
-}
+export const stdioToLog = (value) => ({
+  type: STDIO_TO_LOG,
+  value
+});

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export default class Console extends Component {
   static propTypes = {
-    entries: PropTypes.arrayOf(PropTypes.shape({
+    log: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
       stream: PropTypes.string.isRequired
@@ -13,13 +13,13 @@ export default class Console extends Component {
   }
 
   static defaultProps = {
-    entries: []
+    log: []
   }
 
   render() {
     return (
      <div className={styles.console}>
-        {this.props.entries.map((entry) =>
+        {this.props.log.map((entry) =>
           <p key={entry.id}
              className={classnames({
               [`${styles.info}`]: entry.stream == 'STDOUT' ,

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 import log from 'Reducers/LogReducers';
-import editor from 'Reducers/EditorReducers';
+import image from 'Reducers/ImageReducers';
 
-export default combineReducers({log, editor});
+export default combineReducers({log, image});

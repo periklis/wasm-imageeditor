@@ -1,18 +1,14 @@
-import {LOG_CLEAR, LOG_COUT} from 'Actions';
+import {CLEAR_LOG, STDIO_TO_LOG} from 'Actions';
 
-export default (state = {entries:[]}, action) => {
+export default (state = [], action) => {
   switch(action.type) {
-  case LOG_CLEAR:
-    return {
-      entries: []
-    };
-  case LOG_COUT:
-    return {
-      entries: [
-        ...state.entries,
+  case CLEAR_LOG:
+    return [];
+  case STDIO_TO_LOG:
+    return [
+        ...state,
         action.value
-      ]
-    };
+    ];
   default:
     return state;
   }

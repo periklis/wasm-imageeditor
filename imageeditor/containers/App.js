@@ -4,30 +4,26 @@ import { saveImage, resizeImage, zoomImage} from 'Actions';
 import App from 'Components/App/App';
 import WasmImageProcessor from 'Libs/wasm.js';
 
-const defaultStorageName = '/data/original.jpg';
+const initialStoragePath = '/data/original.jpg';
 
-const mapStateToProps = (state) => ({
-  dimensions: state.editor.dimensions,
-  histogram: state.editor.histogram,
-  imageSrc: state.editor.imageSrc
-});
+const mapStateToProps = (state) => (state.image);
 
 const mapDispatchToProps = (dispatch) => ({
   onResize: (value) => {
-    const results = WasmImageProcessor.resize(defaultStorageName, value.width, value.height);
-    dispatch(resizeImage(results));
+    const image = WasmImageProcessor.resize(initialStoragePath, value.width, value.height);
+    dispatch(resizeImage(image));
   },
   onSave: (acceptedFiles) => {
     fetch(acceptedFiles[0].preview)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
-        const results = WasmImageProcessor.save(buffer, defaultStorageName);
-        dispatch(saveImage(results));
+        const image = WasmImageProcessor.save(buffer, initialStoragePath);
+        dispatch(saveImage(image));
       });
   },
   onZoom: (zoomFactor) => {
-    const results = WasmImageProcessor.zoom(defaultStorageName, zoomFactor);
-    dispatch(zoomImage(results));
+    const image = WasmImageProcessor.zoom(initialStoragePath, zoomFactor);
+    dispatch(zoomImage(image));
   }
 });
 

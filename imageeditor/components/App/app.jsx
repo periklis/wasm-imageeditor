@@ -18,8 +18,7 @@ export default class App extends Component {
     imageSrc: PropTypes.string.isRequired,
     onResize: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired,
-    onZoom: PropTypes.func.isRequired,
-    originalFilename: PropTypes.string.isRequired,
+    onZoom: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -31,8 +30,7 @@ export default class App extends Component {
     imageSrc: '',
     onResize: () => {},
     onSave: () => {},
-    onZoom: () => {},
-    originalFilename: '/data/original.jpg'
+    onZoom: () => {}
   }
 
   render() {

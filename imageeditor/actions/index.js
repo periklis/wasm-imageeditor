@@ -1,2 +1,2 @@
-export * from 'Actions/EditorActions';
+export * from 'Actions/ImageActions';
 export * from 'Actions/LogActions';
