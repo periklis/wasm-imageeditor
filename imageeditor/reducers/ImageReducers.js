@@ -9,7 +9,7 @@ const initialState = {
   imageSrc: ''
 };
 
-export default function editor(state = initialState, action) {
+export default (state = initialState, action) => {
   switch(action.type) {
   case RESIZE_IMAGE:
   case SAVE_IMAGE:
@@ -22,4 +22,4 @@ export default function editor(state = initialState, action) {
   default:
     return state;
   }
-}
+};
