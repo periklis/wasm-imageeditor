@@ -1,6 +1,6 @@
-import {IMAGE_RESIZE, IMAGE_SAVE, IMAGE_ZOOM} from 'Actions';
+import {RESIZE_IMAGE, SAVE_IMAGE, ZOOM_IMAGE} from 'Actions';
 
-const defaultEditorState = {
+const initialState = {
   dimensions: {
     width: 0,
     height: 0
@@ -9,11 +9,11 @@ const defaultEditorState = {
   imageSrc: ''
 };
 
-export default function editor(state = defaultEditorState, action) {
+export default function editor(state = initialState, action) {
   switch(action.type) {
-  case IMAGE_RESIZE:
-  case IMAGE_SAVE:
-  case IMAGE_ZOOM:
+  case RESIZE_IMAGE:
+  case SAVE_IMAGE:
+  case ZOOM_IMAGE:
     return {
       dimensions: action.dimensions,
       histogram: action.histogram,

@@ -73,7 +73,7 @@ class WasmImageProcessor {
     let results = {
       dimensions: {width:0, height:0},
       histogram: [],
-      objectUrl: ''
+      imageSrc: ''
     };
 
     results.dimensions.width = dimensions.get('x');
@@ -85,7 +85,7 @@ class WasmImageProcessor {
 
     const file = FS.readFile(filename, {encoding: 'binary'});
     const blob = new Blob([new Uint8Array(file)], {type: 'application/image'});
-    results.objectUrl = URL.createObjectURL(blob);
+    results.imageSrc = URL.createObjectURL(blob);
 
     return results;
   }

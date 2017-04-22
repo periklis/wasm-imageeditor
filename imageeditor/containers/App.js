@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { saveImage, resizeImage, zoomImage} from 'Actions';
 import App from 'Components/App/App';
+import WasmImageProcessor from 'Libs/wasm.js';
 
 const defaultStorageName = '/data/original.jpg';
 
@@ -11,14 +12,22 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onResize: (value) =>
-    dispatch(resizeImage(defaultStorageName, value)),
-  onSave: (acceptedFiles) =>
+  onResize: (value) => {
+    const results = WasmImageProcessor.resize(defaultStorageName, value.width, value.height);
+    dispatch(resizeImage(results));
+  },
+  onSave: (acceptedFiles) => {
     fetch(acceptedFiles[0].preview)
-    .then((response) => response.arrayBuffer())
-    .then((buffer) => dispatch(saveImage(buffer, defaultStorageName))),
-  onZoom: (zoomFactor) =>
-    dispatch(zoomImage(defaultStorageName, zoomFactor))
+      .then((response) => response.arrayBuffer())
+      .then((buffer) => {
+        const results = WasmImageProcessor.save(buffer, defaultStorageName);
+        dispatch(saveImage(results));
+      });
+  },
+  onZoom: (zoomFactor) => {
+    const results = WasmImageProcessor.zoom(defaultStorageName, zoomFactor);
+    dispatch(zoomImage(results));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
