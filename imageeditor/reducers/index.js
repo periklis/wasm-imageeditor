@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux';
-import print from 'Reducers/PrintReducers';
+import log from 'Reducers/LogReducers';
 import editor from 'Reducers/EditorReducers';
 
-export default combineReducers({
-  print,
-  editor
-});
+export default combineReducers({log, editor});
