@@ -1,19 +1,27 @@
 @import '~Components/main';
 
 .app-container {
+  align-content: stretch;
+  align-items: stretch;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
+  height: 100%;
+  justify-content: flex-start;
   margin: 0;
+  width: 100%;
 
-  .app-bar {
-    flex: 1 100%;
-    margin: 0;
+  .app-content {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .app-work-area {
+      display: flex;
+      flex: 1 0;
+      flex-flow: column wrap;
+    }
   }
 
-  .app-work-area {
-    flex: .8;
-    flex-flow: row wrap;
-    }
+
 }
 
 @media all and (max-width: $tablet-portrait-max-width) {

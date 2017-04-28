@@ -1,9 +1,21 @@
-html,
-body,
-div {
-  margin: 0;
+* {
+  box-sizing: border-box;
+
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
 }
 
-img {
-  max-width: 100%;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  > div {
+    margin: 0;
+    padding: 0;
+  }
 }

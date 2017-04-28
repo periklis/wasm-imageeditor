@@ -2,5 +2,9 @@
 
 .edit-canvas {
   background-color: $editcanvas-background-color;
-  flex: 1 100;
+  flex: 1;
+
+  img {
+    max-width: 100%;
+  }
 }

@@ -1,6 +1,11 @@
 @import '~Components/main';
 
 .console {
+  border-color: $console-border-color;
+  border-radius: 5px;
+  border-style: dashed;
+  border-width: 2px;
+  flex: .2;
   overflow-wrap: break-word;
 
   .info {

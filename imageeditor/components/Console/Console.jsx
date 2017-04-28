@@ -17,13 +17,13 @@ export default class Console extends Component {
 
   render() {
     return (
-     <div className={styles.console}>
+      <div className={styles.console}>
         {this.props.log.map((entry, index) =>
           <p key={index}
              className={classnames({
               [`${styles.info}`]: entry.stream == 'STDOUT' ,
               [`${styles.error}`]: (entry.stream == 'STDERR')
-            })}>{entry.text}</p>
+            })}>{index}: {entry.text}</p>
          )}
       </div>
     );
