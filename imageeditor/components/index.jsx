@@ -13,7 +13,7 @@ let store = createStore(
   composeWithDevTools()
 );
 
-const target = document.querySelector('#webAsseblyImageEditor');
+const target = document.querySelector('#webAssemblyImageEditor');
 
 const app = (
   <AppContainer>
