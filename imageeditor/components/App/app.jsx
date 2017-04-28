@@ -53,7 +53,7 @@ export default class App extends Component {
         <ImageProcessor
             shellFilename='imageprocessor.js'
             wasmFilename='imageprocessor.wasm'
-            postRun={[WasmImageProcessor.prepare]}/>
+            preInit={[WasmImageProcessor.prepare]}/>
       </div>
     );
   }
