@@ -1,21 +1,16 @@
-* {
-  box-sizing: border-box;
+@import '~Components/main';
 
-  ::before,
-  ::after {
-    box-sizing: inherit;
+html,
+body,
+div {
+  margin: 0;
+  padding: 0;
+
+  @media all and (min-width: $laptop-screen-min-width) {
+    height: 100%;
   }
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-
-  > div {
-    margin: 0;
-    padding: 0;
-  }
+img {
+  max-width: 100%;
 }

@@ -16,16 +16,15 @@
 
     .app-work-area {
       display: flex;
-      flex: 1 0;
+      flex-flow: column nowrap;
+
+      @media all and (min-width: $widescreen-min-width) {
+        flex-flow: row nowrap;
+      }
+    }
+
+    @media all and (max-width: $tablet-portrait-max-width) {
       flex-flow: column wrap;
     }
   }
-
-
-}
-
-@media all and (max-width: $tablet-portrait-max-width) {
-  .app-container {
-    flex-flow: column wrap;
-    }
 }

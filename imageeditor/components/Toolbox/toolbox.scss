@@ -1,7 +1,6 @@
 @import '~Components/main';
 
 .toolbox {
-  flex: 0 1;
 
   .dropzone-area {
     border-color: $dropzone-border-color;
@@ -16,34 +15,6 @@
       height: 200px;
       white-space: pre-wrap;
       width: 200px;
-    }
-  }
-}
-
-@media all and (max-width: $tablet-portrait-max-width) {
-  .toolbox {
-    display: flex;
-    flex: 1 100%;
-    flex-flow: row wrap;
-
-    .dropzone,
-    .dimensions,
-    .zoom-factor,
-    .image-dimensions,
-    .image-dimensions {
-      flex: 1;
-    }
-  }
-}
-
-@media all and (max-width: $phone-portrait-max-width) {
-  .toolbox {
-    .dropzone,
-    .dimensions,
-    .zoom-factor,
-    .image-dimensions,
-    .image-dimensions {
-      flex: 1 100%;
     }
   }
 }

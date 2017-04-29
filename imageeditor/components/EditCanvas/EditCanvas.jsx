@@ -14,9 +14,7 @@ export default class EditCanvas extends Component {
   render() {
     return (
       <div className={styles.editCanvas}>
-        {this.props.imageSrc &&
-         <img src={this.props.imageSrc} />
-        }
+        <img src={this.props.imageSrc} />
       </div>
     );
   }

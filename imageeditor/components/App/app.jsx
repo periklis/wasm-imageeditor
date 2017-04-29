@@ -38,23 +38,25 @@ export default class App extends Component {
       <div className={styles.appContainer}>
         <AppBar title="WebAssembly ImageEditor" />
 
-        <section className={styles.appContent}>
+        <div className={styles.appContent}>
           <Toolbox dimensions={this.props.dimensions}
                    histogram={this.props.histogram}
                    onDrop={this.props.onSave}
                    onResize={this.props.onResize}
                    onZoom={this.props.onZoom} />
 
-          <div className={styles.appWorkArea}>
-            <EditCanvas imageSrc={this.props.imageSrc} />
-            <Console />
-          </div>
+          {this.props.imageSrc &&
+           <div className={styles.appWorkArea}>
+             <EditCanvas imageSrc={this.props.imageSrc} />
+             <Console />
+           </div>
+          }
 
           <ImageProcessor
               shellFilename='imageprocessor.js'
               wasmFilename='imageprocessor.wasm'
               preInit={[WasmImageProcessor.prepare]}/>
-        </section>
+        </div>
       </div>
     );
   }
