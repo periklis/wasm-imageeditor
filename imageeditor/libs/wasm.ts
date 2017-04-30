@@ -1,13 +1,13 @@
 class WasmImageProcessor {
 
-  prepare = (): void => {
-    FS.mkdir('/data');
-    FS.mount(IDBFS, {}, '/data');
-    FS.syncfs(true, () => {});
-  };
+  public prepare = (): void => {
+    FS.mkdir("/data");
+    FS.mount(IDBFS, {}, "/data");
+    FS.syncfs(true, () => ({}));
+  }
 
-  resize = (filename: string, width: number, height: number): IImage => {
-    const targetFilename = '/data/resized.jpg';
+  public resize = (filename: string, width: number, height: number): IImage => {
+    const targetFilename = "/data/resized.jpg";
     this.preProcess(filename, targetFilename);
 
     const ip = new Module.ImageProcessor(targetFilename);
@@ -17,29 +17,7 @@ class WasmImageProcessor {
     const results = this.postProcess(
       targetFilename,
       ip.dimensions(),
-      ip.histogram()
-    );
-
-    ip.delete();
-
-    return results;
-  };
-
-  zoom = (filename: string, zoomFactor: number): IImage => {
-    const targetFilename = '/data/resized.jpg';
-    this.preProcess(filename, targetFilename);
-
-    const ip = new Module.ImageProcessor(targetFilename);
-    const dims = ip.dimensions();
-    const newWidth = dims.get('x') * (zoomFactor/100);
-    const newHeight = dims.get('y') * (zoomFactor/100);
-
-    ip.crop(0, 0, newWidth, newHeight);
-
-    const results = this.postProcess(
-      targetFilename,
-      ip.dimensions(),
-      ip.histogram()
+      ip.histogram(),
     );
 
     ip.delete();
@@ -47,11 +25,33 @@ class WasmImageProcessor {
     return results;
   }
 
-  save = (buffer: ArrayBuffer, filename: string): IImage => {
+  public zoom = (filename: string, zoomFactor: number): IImage => {
+    const targetFilename = "/data/resized.jpg";
+    this.preProcess(filename, targetFilename);
+
+    const ip = new Module.ImageProcessor(targetFilename);
+    const dims = ip.dimensions();
+    const newWidth = dims.get("x") * (zoomFactor / 100);
+    const newHeight = dims.get("y") * (zoomFactor / 100);
+
+    ip.crop(0, 0, newWidth, newHeight);
+
+    const results = this.postProcess(
+      targetFilename,
+      ip.dimensions(),
+      ip.histogram(),
+    );
+
+    ip.delete();
+
+    return results;
+  }
+
+  public save = (buffer: ArrayBuffer, filename: string): IImage => {
     FS.writeFile(
       filename,
       new Uint8Array(buffer),
-      {encoding: 'binary'}
+      { encoding: "binary" },
     );
 
     const ip = new Module.ImageProcessor(filename);
@@ -61,30 +61,30 @@ class WasmImageProcessor {
     return results;
   }
 
-  preProcess = (sourceFilename: string, targetFilename: string): void => {
+  private preProcess = (sourceFilename: string, targetFilename: string): void => {
     FS.writeFile(
       targetFilename,
-      FS.readFile(sourceFilename, {encoding: 'binary'}),
-      {encoding: 'binary'}
+      FS.readFile(sourceFilename, { encoding: "binary" }),
+      { encoding: "binary" },
     );
   }
 
-  postProcess = (filename: string, dimensions: any, histogram: any): IImage => {
-    let results = {
-      dimensions: {width:0, height:0},
-      histogram: <number[]>[],
-      imageSrc: ''
+  private postProcess = (filename: string, dimensions: any, histogram: any): IImage => {
+    const results = {
+      dimensions: { width: 0, height: 0 },
+      histogram: [] as number[],
+      imageSrc: "",
     };
 
-    results.dimensions.width = dimensions.get('x');
-    results.dimensions.height = dimensions.get('y');
+    results.dimensions.width = dimensions.get("x");
+    results.dimensions.height = dimensions.get("y");
 
-    for(var i=0; i < histogram.size();i++){
+    for (let i = 0; i < histogram.size(); i++) {
       results.histogram.push(histogram.get(i));
     }
 
-    const file = FS.readFile(filename, {encoding: 'binary'});
-    const blob = new Blob([new Uint8Array(file)], {type: 'application/image'});
+    const file = FS.readFile(filename, { encoding: "binary" });
+    const blob = new Blob([new Uint8Array(file)], { type: "application/image" });
     results.imageSrc = URL.createObjectURL(blob);
 
     return results;

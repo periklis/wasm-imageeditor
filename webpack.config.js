@@ -40,6 +40,14 @@ const commonConfig = {
         ]
       },
       {
+        test: /\.ts$/,
+        exclude: /[\/\\]node_modules[\/\\]/,
+        enforce: 'pre',
+        use: [
+          'tslint-loader'
+        ]
+      },
+      {
         test: /\.tsx?$/,
         use: [
           {

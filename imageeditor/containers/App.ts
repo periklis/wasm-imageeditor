@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import fetch from 'isomorphic-fetch';
-import { saveImage, resizeImage, zoomImage } from '../actions/ImageActions';
-import App from '../components/App/App';
-import WasmImageProcessor from '../libs/wasm';
+import fetch from "isomorphic-fetch";
+import { connect } from "react-redux";
+import { resizeImage, saveImage, zoomImage } from "../actions/ImageActions";
+import App from "../components/App/App";
+import WasmImageProcessor from "../libs/wasm";
 
-const initialStoragePath = '/data/original.jpg';
+const initialStoragePath = "/data/original.jpg";
 
 const mapStateToProps = (state: any): any => (state.image);
 
@@ -24,10 +24,10 @@ const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => ({
   onZoom: (zoomFactor: number) => {
     const image = WasmImageProcessor.zoom(initialStoragePath, zoomFactor);
     dispatch(zoomImage(image));
-  }
+  },
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(App);
