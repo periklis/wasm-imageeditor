@@ -1,15 +1,15 @@
-import {RESIZE_IMAGE, SAVE_IMAGE, ZOOM_IMAGE} from 'Actions';
+import {RESIZE_IMAGE, SAVE_IMAGE, ZOOM_IMAGE} from '../actions';
 
 const initialState = {
   dimensions: {
     width: 0,
     height: 0
   },
-  histogram: [],
+  histogram: <number[]>[],
   imageSrc: ''
 };
 
-export default (state = initialState, action) => {
+export default (state: IImage = initialState, action: IImageAction) => {
   switch(action.type) {
   case RESIZE_IMAGE:
   case SAVE_IMAGE:

@@ -1,45 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 
-export default class ImageProcessor extends Component {
-  static propTypes = {
-    binArguments: PropTypes.string,
-    environment: PropTypes.string.isRequired,
-    locateMemFile: PropTypes.func,
-    logReadFiles: PropTypes.bool,
-    noExitRuntime: PropTypes.bool,
-    noInitialRun: PropTypes.bool,
-    onPrint: PropTypes.func,
-    onPrintErr: PropTypes.func,
-    postRun: PropTypes.array,
-    preInit: PropTypes.array,
-    preRun: PropTypes.array,
-    shellFilename: PropTypes.string.isRequired,
-    wasmFilename: PropTypes.string.isRequired
-  }
+export default class ImageProcessor extends Component<IImageProcessorProps, {}> {
 
-  static defaultProps = {
-    binArguments: '',
-    environment: 'WEB',
-    locateMemFile: undefined,
-    logReadFiles: false,
-    noExitRuntime: false,
-    noInitialRun: false,
-    onPrint: () => {},
-    onPrintErr: () => {},
-    postRun: [],
-    preInit: [],
-    preRun: [],
-    shellFilename: '',
-    wasmFilename: ''
-  }
-
-  componentWillMount = () => {
+  public componentWillMount = () => {
     window.Module = {};
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     fetch(this.props.wasmFilename)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
@@ -49,8 +17,8 @@ export default class ImageProcessor extends Component {
         Module.logReadFiles = this.props.logReadFiles;
         Module.noExitRuntime = this.props.noExitRuntime;
         Module.noInitialRun = this.props.noInitialRun;
-        Module.print = this.props.onPrint;
-        Module.printErr = this.props.onPrintErr;
+        Module.print = this.props.print;
+        Module.printErr = this.props.printErr;
         Module.preInit = this.props.preInit;
         Module.preRun = this.props.preRun;
         Module.postRun = this.props.postRun;
@@ -69,7 +37,7 @@ export default class ImageProcessor extends Component {
       });
   }
 
-  render() {
+  public render() {
     return (
       <div id="ImageProcessor" />
     );

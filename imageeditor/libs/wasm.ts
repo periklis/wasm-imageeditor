@@ -1,12 +1,12 @@
 class WasmImageProcessor {
 
-  prepare = () => {
+  prepare = (): void => {
     FS.mkdir('/data');
     FS.mount(IDBFS, {}, '/data');
     FS.syncfs(true, () => {});
   };
 
-  resize = (filename, width, height) => {
+  resize = (filename: string, width: number, height: number): IImage => {
     const targetFilename = '/data/resized.jpg';
     this.preProcess(filename, targetFilename);
 
@@ -25,7 +25,7 @@ class WasmImageProcessor {
     return results;
   };
 
-  zoom = (filename, zoomFactor) => {
+  zoom = (filename: string, zoomFactor: number): IImage => {
     const targetFilename = '/data/resized.jpg';
     this.preProcess(filename, targetFilename);
 
@@ -47,7 +47,7 @@ class WasmImageProcessor {
     return results;
   }
 
-  save = (buffer, filename) => {
+  save = (buffer: ArrayBuffer, filename: string): IImage => {
     FS.writeFile(
       filename,
       new Uint8Array(buffer),
@@ -61,7 +61,7 @@ class WasmImageProcessor {
     return results;
   }
 
-  preProcess = (sourceFilename, targetFilename) => {
+  preProcess = (sourceFilename: string, targetFilename: string): void => {
     FS.writeFile(
       targetFilename,
       FS.readFile(sourceFilename, {encoding: 'binary'}),
@@ -69,10 +69,10 @@ class WasmImageProcessor {
     );
   }
 
-  postProcess = (filename, dimensions, histogram) => {
+  postProcess = (filename: string, dimensions: any, histogram: any): IImage => {
     let results = {
       dimensions: {width:0, height:0},
-      histogram: [],
+      histogram: <number[]>[],
       imageSrc: ''
     };
 

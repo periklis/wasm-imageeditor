@@ -5,7 +5,7 @@ export const clearLog = () => ({
   type: CLEAR_LOG
 });
 
-export const stdioToLog = (value) => ({
+export const stdioToLog = (value: ILogEntry) => ({
   type: STDIO_TO_LOG,
   value
 });

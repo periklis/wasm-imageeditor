@@ -1,3 +1,4 @@
+.awcache/*
 .dir-locals.el
 .projectile
 .tern-port

@@ -3,12 +3,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { Store, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import App from 'Containers/App';
-import reducers from 'Reducers';
+import App from '../containers/App';
+import reducers from '../reducers';
 
-let store = createStore(
+let store: Store<any> = createStore(
   reducers, /* preloadedState, */
   composeWithDevTools()
 );
@@ -26,7 +26,7 @@ const app = (
 render(app, target);
 
 if (module && module.hot) {
-  module.hot.accept('../containers/App.js', () => {
+  module.hot.accept('../containers/App.ts', () => {
     render(app, target);
   });
 }

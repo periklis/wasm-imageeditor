@@ -1,22 +1,27 @@
 {
   "presets": [
-     "es2015",
-     "react",
-     "stage-0"
+    "react",
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-0"
   ],
   "plugins": [
-     'transform-runtime',
-     'transform-decorators-legacy',
-     'transform-class-properties',
-     'transform-object-rest-spread',
-     'react-hot-loader/babel'
+    "transform-runtime",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "react-hot-loader/babel"
   ],
   "env": {
-     "production": {
-        "plugins": [
-           "transform-react-remove-prop-types",
-           "transform-react-constant-elements"
-        ]
-     }
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements"
+      ]
+    }
   }
 }

@@ -1,5 +1,4 @@
 import styles from './toolbox.scss';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {Dropdown} from 'react-toolbox/lib/dropdown';
 import {List, ListDivider, ListItem, ListSubHeader} from 'react-toolbox/lib/list';
@@ -14,24 +13,9 @@ const dimensions = [
   {value: {width: 2048, height: 1536}, label: '2048x1536'}
 ];
 
-export default class Toolbox extends Component {
-  static propTypes = {
-    dimensions: PropTypes.object,
-    histogram: PropTypes.array,
-    onDrop: PropTypes.func.isRequired,
-    onResize: PropTypes.func.isRequired,
-    onZoom: PropTypes.func.isRequired
-  };
+export default class Toolbox extends Component<IToolboxProps, {}> {
 
-  static defaultProps = {
-    dimensions: { x: 0, y: 0 },
-    histogram: [],
-    onDrop: () => {},
-    onResize: () => {},
-    onZoom: () => {}
-  };
-
-  render() {
+  public render() {
     return (
       <div className={styles.toolbox}>
         <List>
@@ -39,7 +23,7 @@ export default class Toolbox extends Component {
           <ListItem className={styles.dropzone}>
             <Dropzone className={styles.dropzoneArea}
                       multiple={false}
-                      onDrop={this.props.onDrop}>
+                      onDrop={this.props.onSave}>
               <p>Try dropping some files here, or click to select files to upload</p>
             </Dropzone>
           </ListItem>

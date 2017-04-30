@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
 import fetch from 'isomorphic-fetch';
-import { saveImage, resizeImage, zoomImage} from 'Actions';
-import App from 'Components/App/App';
-import WasmImageProcessor from 'Libs/wasm.js';
+import { saveImage, resizeImage, zoomImage } from '../actions/ImageActions';
+import App from '../components/App/App';
+import WasmImageProcessor from '../libs/wasm';
 
 const initialStoragePath = '/data/original.jpg';
+const mapStateToProps = (state: any): IImage => (state.image);
 
-const mapStateToProps = (state) => (state.image);
-
-const mapDispatchToProps = (dispatch) => ({
-  onResize: (value) => {
+const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => ({
+  onResize: (value: IImageDimensions) => {
     const image = WasmImageProcessor.resize(initialStoragePath, value.width, value.height);
     dispatch(resizeImage(image));
   },
-  onSave: (acceptedFiles) => {
+  onSave: (acceptedFiles: any[]) => {
     fetch(acceptedFiles[0].preview)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
@@ -21,10 +20,13 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(saveImage(image));
       });
   },
-  onZoom: (zoomFactor) => {
+  onZoom: (zoomFactor: number) => {
     const image = WasmImageProcessor.zoom(initialStoragePath, zoomFactor);
     dispatch(zoomImage(image));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

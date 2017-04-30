@@ -12,8 +12,16 @@ const HtmlWebpack = require('html-webpack-plugin');
 const commonConfig = {
   entry: {
     vendor: [
+      'classnames',
+      'es6-promise',
+      'isomorphic-fetch',
+      'lodash',
       'react',
-      'react-dom'
+      'react-dom',
+      'react-dropzone',
+      'redux',
+      'react-redux',
+      'react-toolbox'
     ]
   },
   output: {
@@ -24,28 +32,24 @@ const commonConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /[\/\\]node_modules[\/\\]/,
         enforce: 'pre',
         use: [
-          'babel-loader',
-          {
-            loader: 'eslint-loader',
-            options: {
-              failOnError: true
-            }
-          }
+          'source-map-loader'
         ]
       },
       {
-        test: /\.(js|jsx)?$/,
-        exclude: /[\/\\]node_modules[\/\\]/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              useBabel: true,
+              useCache: false
+            }
           }
-        }
+        ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|avg)$/,
@@ -82,7 +86,7 @@ const commonConfig = {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.scss', '.ts', '.tsx', '.js', '.jsx' ],
     alias: {
       Actions: path.resolve(rootDir, 'imageeditor/actions'),
       Components: path.resolve(rootDir, 'imageeditor/components'),
@@ -109,7 +113,7 @@ const developmentConfig = () => {
     entry: {
       application: [
         'react-hot-loader/patch',
-        './imageeditor/components/index.jsx'
+        './imageeditor/components/index.tsx'
       ]
     },
     module: {
@@ -223,7 +227,7 @@ const productionConfig = () => {
     devtool: 'cheap-module-source-map',
     entry: {
       application: [
-        './imageeditor/components/index.jsx'
+        './imageeditor/components/index.tsx'
       ]
     },
     plugins: [
