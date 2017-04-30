@@ -1,4 +1,4 @@
-import styles from './console.scss';
+import styles from './styles.scss';
 import classnames from 'classnames';
 import React, {Component} from 'react';
 

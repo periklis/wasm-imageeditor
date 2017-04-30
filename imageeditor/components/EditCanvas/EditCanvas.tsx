@@ -1,4 +1,4 @@
-import styles from './editcanvas.scss';
+import styles from './styles.scss';
 import React, { Component } from 'react';
 
 export default class EditCanvas extends Component<ICanvasProps, {}> {

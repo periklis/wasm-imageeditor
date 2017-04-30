@@ -1,4 +1,4 @@
-import styles from './toolbox.scss';
+import styles from './styles.scss';
 import React, { Component } from 'react';
 import {Dropdown} from 'react-toolbox/lib/dropdown';
 import {List, ListDivider, ListItem, ListSubHeader} from 'react-toolbox/lib/list';

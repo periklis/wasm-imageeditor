@@ -25,7 +25,7 @@
     "file-uploader": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
-    "react": "~15.5.3",
+    "react": "^15.5.4",
     "react-dom": "~15.5.3",
     "react-dropzone": "^3.13.1",
     "react-hot-loader": "^3.0.0-beta.6",
@@ -84,5 +84,6 @@
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-dev-server": "^2.3.3",
     "webpack-merge": "^4.1.0"
-  }
+  },
+  "peerDependencies": {}
 }

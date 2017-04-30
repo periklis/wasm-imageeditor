@@ -1,4 +1,4 @@
-import styles from './app.scss';
+import styles from './styles.scss';
 import React, { Component } from 'react';
 import {AppBar} from 'react-toolbox/lib/app_bar';
 import Console from '../../containers/Console';
