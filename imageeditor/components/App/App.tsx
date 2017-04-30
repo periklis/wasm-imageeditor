@@ -15,15 +15,15 @@ export default class App extends Component<IAppProps, {}> {
         <AppBar title="WebAssembly ImageEditor" />
 
         <div className={styles.appContent}>
-          <Toolbox dimensions={this.props.toolbox.dimensions}
-                   histogram={this.props.toolbox.histogram}
-                   onSave={this.props.toolbox.onSave}
-                   onResize={this.props.toolbox.onResize}
-                   onZoom={this.props.toolbox.onZoom} />
+          <Toolbox dimensions={this.props.dimensions}
+                   histogram={this.props.histogram}
+                   onSave={this.props.onSave}
+                   onResize={this.props.onResize}
+                   onZoom={this.props.onZoom} />
 
-          {this.props.canvas.imageSrc &&
+          {this.props.imageSrc &&
            <div className={styles.appWorkArea}>
-             <EditCanvas imageSrc={this.props.canvas.imageSrc} />
+             <EditCanvas imageSrc={this.props.imageSrc} />
              <Console />
            </div>
           }

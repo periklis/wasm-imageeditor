@@ -5,7 +5,8 @@ import App from '../components/App/App';
 import WasmImageProcessor from '../libs/wasm';
 
 const initialStoragePath = '/data/original.jpg';
-const mapStateToProps = (state: any): IImage => (state.image);
+
+const mapStateToProps = (state: any): any => (state.image);
 
 const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => ({
   onResize: (value: IImageDimensions) => {

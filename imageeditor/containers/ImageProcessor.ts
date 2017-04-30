@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { stdioToLog as log } from '../actions/LogActions';
+import { stdioToLog as log } from '../actions';
 import ImageProcessor from '../components/ImageProcessor/ImageProcessor';
 
 const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => ({

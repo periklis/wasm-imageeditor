@@ -9,7 +9,7 @@ import App from '../containers/App';
 import reducers from '../reducers';
 
 let store: Store<any> = createStore(
-  reducers, /* preloadedState, */
+  reducers,
   composeWithDevTools()
 );
 

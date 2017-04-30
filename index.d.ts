@@ -49,10 +49,7 @@ interface ICanvasProps {
     imageSrc: string
 }
 
-interface IAppProps {
-    toolbox?: IToolboxProps,
-    canvas?: ICanvasProps
-}
+interface IAppProps extends IToolboxProps, ICanvasProps {}
 
 interface IImageProcessorProps  {
     binArguments?: string,
