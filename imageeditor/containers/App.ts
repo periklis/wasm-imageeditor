@@ -28,6 +28,6 @@ const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => ({
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
