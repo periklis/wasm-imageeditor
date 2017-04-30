@@ -46,7 +46,7 @@ const commonConfig = {
             loader: 'awesome-typescript-loader',
             options: {
               useBabel: true,
-              useCache: false
+              useCache: true
             }
           }
         ]
