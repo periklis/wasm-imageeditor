@@ -51,7 +51,7 @@ class WasmImageProcessor {
     FS.writeFile(
       filename,
       new Uint8Array(buffer),
-      { encoding: "binary" },
+      { encoding: "binary", flags: "w" },
     );
 
     const ip = new Module.ImageProcessor(filename);
