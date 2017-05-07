@@ -6,6 +6,12 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-0.0.32.tgz#449abcd9a826807811ef101e58df9f83cfc61713"
 
+"@types/emscripten@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/emscripten/-/emscripten-0.0.30.tgz#e5ff76cba27bc315ae7b016903295b03ac46ea98"
+  dependencies:
+    "@types/webassembly-js-api" "*"
+
 "@types/isomorphic-fetch@^0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
@@ -52,6 +58,10 @@
 "@types/redux@3.6.31":
   version "3.6.31"
   resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.31.tgz#40eafa7575db36b912ce0059b85de98c205b0708"
+
+"@types/webassembly-js-api@*", "@types/webassembly-js-api@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@types/webassembly-js-api/-/webassembly-js-api-0.0.1.tgz#62d50b201077d7d4cc109bb1cada22fdfd4523fb"
 
 abbrev@1:
   version "1.1.0"

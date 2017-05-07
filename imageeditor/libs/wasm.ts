@@ -64,8 +64,8 @@ class WasmImageProcessor {
   private preProcess = (sourceFilename: string, targetFilename: string): void => {
     FS.writeFile(
       targetFilename,
-      FS.readFile(sourceFilename, { encoding: "binary" }),
-      { encoding: "binary" },
+      FS.readFile(sourceFilename, { encoding: "binary", flags: "r" }),
+      { encoding: "binary", flags: "w" },
     );
   }
 
@@ -83,7 +83,7 @@ class WasmImageProcessor {
       results.histogram.push(histogram.get(i));
     }
 
-    const file = FS.readFile(filename, { encoding: "binary" });
+    const file = FS.readFile(filename, { encoding: "binary", flags: "r" });
     const blob = new Blob([new Uint8Array(file)], { type: "application/image" });
     results.imageSrc = URL.createObjectURL(blob);
 

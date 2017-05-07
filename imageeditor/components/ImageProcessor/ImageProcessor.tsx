@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 export default class ImageProcessor extends Component<IImageProcessorProps, {}> {
 
   public componentWillMount = () => {
-    window.Module = {};
+    (window as any).Module = {};
   }
 
   public componentDidMount() {

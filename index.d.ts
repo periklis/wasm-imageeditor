@@ -1,4 +1,4 @@
-declare module '*.scss' {
+declare module "*.scss" {
   const content: any;
   export default content;
 }
@@ -6,13 +6,21 @@ declare module '*.scss' {
 // TODO Replace the following with @types/react-hot-loader
 declare var module: any;
 
-// TODO Replace the following with a working copy of @types/emscripten
-declare var Module: any;
-declare var FS: any;
-declare var IDBFS: any;
+declare namespace Module {
+  interface IImageProcessor {
+    crop(x: number, y: number, width: number, height: number): void;
+    dimensions(): {
+      x: number;
+      y: number;
+      get: (coord: string) => number;
+    };
+    histogram(): number[];
+    delete(): void;
+  }
 
-interface Window {
-  Module: any;
+  const ImageProcessor: {
+    new(filepath: string): IImageProcessor;
+  };
 }
 
 interface IImageDimensions {
@@ -42,7 +50,7 @@ interface IAppProps extends IToolboxProps, ICanvasProps {}
 
 interface IImageProcessorProps  {
   binArguments?: string[];
-  environment?: string;
+  environment?: Module.EnvironmentType;
   locateMemFile?: (url: string) => string;
   logReadFiles?: boolean;
   noExitRuntime?: boolean;
