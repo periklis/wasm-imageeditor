@@ -1,4 +1,4 @@
-# WebAssembly & Webpack based ImageEditor
+#  WebAssembly, ReactJs & Typescript ImageEditor Demo
 
 ## Build
 ```
